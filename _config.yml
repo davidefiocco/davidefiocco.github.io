@@ -7,7 +7,7 @@
 # https://learnxinyminutes.com/docs/yaml/
 
 title: Davide's GitHub pages
-description: Sporadic posts on GitHub
+description: Sporadic posts on GitHub pages
 github_username: davidefiocco
 
 # Email and twitter are optional:
@@ -15,7 +15,7 @@ email:
 twitter_username: monodavide
 
 # Set this to true to get LaTeX math equation support
-use_math:
+use_math: true
 
 # Add your Google Analytics ID here if you have one and want to use it
 google_analytics:

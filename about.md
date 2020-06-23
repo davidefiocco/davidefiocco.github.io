@@ -1,4 +1,4 @@
 # About
 
-This is where you put the contents of your *About* page. Like all your pages, it's in [Markdown](https://guides.github.com/features/mastering-markdown/) format.
-
+Hi, I'm Davide. Currently I am a data scientist at [Frontiers](www.frontiersin.org).
+I read [this](https://medium.com/@racheltho/why-you-yes-you-should-blog-7d2544ac1045) and decided to post stuff here!

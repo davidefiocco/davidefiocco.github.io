@@ -1,3 +1,3 @@
-# Your blog
+# Oh my blog
 
-This is the repository for your blog! Click *_config.yml* above to get started and fill in the details. Then click *index.md* and edit it to start creating your home page.
+Repository for https://davidefiocco.github.io/ generated with fast.ai's [`fast_template`](https://www.fast.ai/2020/01/16/fast_template/). 
