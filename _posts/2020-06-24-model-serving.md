@@ -1,1 +1,3 @@
-# More soon :sunglasses:
+# More soon!
+
+:sunglasses:
