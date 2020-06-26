@@ -1,3 +1,0 @@
-# More soon!
-
-:sunglasses:
