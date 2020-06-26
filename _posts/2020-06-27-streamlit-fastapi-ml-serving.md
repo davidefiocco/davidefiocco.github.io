@@ -150,6 +150,6 @@ The streamlit-generated page can be visited at http://localhost:8501, and after 
 
 One can try to run the model on more images to experiment with its strengths and weaknesses (classes used in the segmentation are those of the [PASCAL VOC 2012 dataset](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html#introduction)).
 
-With essentially no changes, it's then possible to deploy the application on the web (e.g. with [Heroku](http://heroku.com/)). Note that quite some elements are still missing to consider it a full-blown production application: secure authentication (which can be enabled via FastAPI), dealing with concurrency under heavy load, monitoring, logging,... some of which could be dealt with in another post!  
+With essentially no changes, it's then possible to deploy the application on the web (e.g. with [Heroku](http://heroku.com/)). Note that quite some elements are still missing to consider it a full-blown production application: secure authentication (which can be enabled via FastAPI), concurrent requests under heavy load, monitoring, logging,... some of which could be dealt with in another post!  
 
 Still, it's impressive how not-so-basic data products can be created with so little Python code!
