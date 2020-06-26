@@ -27,8 +27,9 @@ So why not combine the two, and get the best of both worlds?
 ## A simple "full-stack" application: image semantic segmentation with DeepLabV3
 
 As an example, let's take *image segmentation*, which is the task of assigning to each pixel of a given image to a category (for a primer on image segmentation, check out the [fast.ai course](https://course.fast.ai/videos/?lesson=3)).  
-Semantic segmentation can be done using a model pre-trained on images labeled using predefined list of categories. An example in this sense is [DeepLabV3](https://arxiv.org/pdf/1706.05587.pdf)) these have been already [implemented in PyTorch](https://pytorch.org/hub/pytorch_vision_deeplabv3_resnet101/).  
-How can we serve those in an a app with a streamlit frontend and FastAPI backend?
+Semantic segmentation can be done using a model pre-trained on images labeled using predefined list of categories. An example in this sense is the [DeepLabV3](https://arxiv.org/pdf/1706.05587.pdf)) model, which is already [implemented in PyTorch](https://pytorch.org/hub/pytorch_vision_deeplabv3_resnet101/).  
+
+How can we serve such a model in an a app with a streamlit frontend and FastAPI backend?
 
 One possibility is to have two services deployed in two Docker containers, orchestrated with `docker-compose`:
 
