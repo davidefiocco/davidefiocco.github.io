@@ -128,7 +128,7 @@ async def get_segmentation_map(file: bytes = File(...)):
         return FileResponse(outfile.name, media_type="image/png")
 ```
 
-One just needs to add Dockerfiles, `pip` requirements and the core Pytorch code (stealing from the [official tutorial](https://pytorch.org/hub/pytorch_vision_deeplabv3_resnet101/)) to come up with a [complete solution](https://github.com/davidefiocco/streamlit-fastapi-model-serving/).
+One just needs to add Dockerfiles, `pip` requirements and the core PyTorch code (stealing from the [official tutorial](https://pytorch.org/hub/pytorch_vision_deeplabv3_resnet101/)) to come up with a [complete solution](https://github.com/davidefiocco/streamlit-fastapi-model-serving/).
 
 Note that we're dealing with images in this example, but we could definitely modify it to use other kind of data in input and output!
 
