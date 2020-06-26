@@ -76,9 +76,9 @@ endpoint = '/segmentation'
 
 st.write('''Obtain semantic segmentation maps of the image in input via DeepLabV3 implemented in PyTorch.
          This streamlit example uses a FastAPI service as backend.
-         Visit this URL at `:8000/docs` for FastAPI documentation.''')
+         Visit this URL at `:8000/docs` for FastAPI documentation.''') # description and instructions
 
-image = st.file_uploader('insert image')  # image widget
+image = st.file_uploader('insert image')  # image upload widget
 
 
 def process(image, server_url: str):
@@ -98,7 +98,7 @@ def process(image, server_url: str):
 if st.button('Get segmentation map'):
     segments = process(image, url+endpoint)
     segmented_image = Image.open(io.BytesIO(segments.content)).convert('RGB')
-    st.image([image, segmented_image], width=300)
+    st.image([image, segmented_image], width=300) # output dyptich
 ```
 
 The FastAPI backend calls some methods from an auxiliary module `segmentation.py`, and implements a `/segmentation` endpoint giving an image in output (handling images with FastAPI can be a bit tricky but [it can definitely be done](https://stackoverflow.com/a/55905051/4240413)):
@@ -147,6 +147,8 @@ The streamlit-generated page can be visited at http://localhost:8501, and after 
 
 ![streamlit_ui](../images/2020-06-27-streamlit.png)
 
-One can try other images to experiment with strengths and weaknesses of the model (classes used in the segmentation are those of the [PASCAL VOC 2012 dataset](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html#introduction)).
+One can try more images to experiment with strengths and weaknesses of the model (classes used in the segmentation are those of the [PASCAL VOC 2012 dataset](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html#introduction)).
 
-With essentially no changes, it's then possible to deploy the application on the web (e.g. with [Heroku](http://heroku.com/)). Note that quite some elements will be still missing to call it a full-blown production application: secure authentication (which can be enabled via FastAPI), dealing with concurrency under heavy load, monitoring, logging,... some of which could be dealt with in another post! Still, it's impressive how not-so-basic data products can be created with so little Python code!
+With essentially no changes, it's then possible to deploy the application on the web (e.g. with [Heroku](http://heroku.com/)). Note that quite some elements will be still missing to call it a full-blown production application: secure authentication (which can be enabled via FastAPI), dealing with concurrency under heavy load, monitoring, logging,... some of which could be dealt with in another post!  
+
+Still, it's impressive how not-so-basic data products can be created with so little Python code!
