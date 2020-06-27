@@ -1,6 +1,6 @@
 # Machine learning model serving in Python using FastAPI and streamlit
 
-In my current job I train machine learning models. When experiments show that one of these models can solve some need of the company, we sometimes serve it to users in the form of a "prototype" deployed on internal servers. While such a prototype may not be production-ready yet, it can be useful to show to users strengths and weeknesses of the proposed solution and get feedback so to release better iterations.
+In my current job I train machine learning models. When experiments show that one of these models can solve some need of the company, we sometimes serve it to users in the form of a "prototype" deployed on internal servers. While such a prototype may not be production-ready yet, it can be useful to show to users strengths and weaknesses of the proposed solution and get feedback so to release better iterations.
 
 Such a prototype needs to have:
 
@@ -9,7 +9,7 @@ Such a prototype needs to have:
 
 Also, it'd be nice to create these easily, quickly and concisely, so that more attention and time can be devoted to better data and model development!
 
-In the recent past I have dabbled in HTML and Javascript to create UIs, and used Flask to create the underlying backend services. This did the job, but:
+In the recent past I have dabbled in HTML and JavaScript to create UIs, and used Flask to create the underlying backend services. This did the job, but:
 
 - I could just create very simple UIs (using [bootstrap](https://getbootstrap.com/) and [jQuery](https://jquery.com/)), but had to bug my colleagues to make them functional and not totally ugly.
 - My Flask API endpoints were very simple and they didn't have API documentation. They also served results using the server built-in Flask which is [not suitable for production](https://flask.palletsprojects.com/en/1.1.x/deploying/).
@@ -18,7 +18,7 @@ In the recent past I have dabbled in HTML and Javascript to create UIs, and used
 
 You may already have heard of FastAPI and streamlit, two Python libraries that lately are getting quite some attention in the applied ML community.
 
-[FastAPI](https://fastapi.tiangolo.com/) is [gaining popularity](https://twitter.com/honnibal/status/1272513991101775872) among Python frameworks. It is thoroughly documentated, allows to code APIs following [OpenAPI specifications](https://en.wikipedia.org/wiki/OpenAPI_Specification) and can use `uvicorn` behind the scenes, allowing to make it "good enough" for some production use. Its syntax is also similar to that of Flask, so that its easy to switch to it if you have used Flask before.
+[FastAPI](https://fastapi.tiangolo.com/) is [gaining popularity](https://twitter.com/honnibal/status/1272513991101775872) among Python frameworks. It is thoroughly documented, allows to code APIs following [OpenAPI specifications](https://en.wikipedia.org/wiki/OpenAPI_Specification) and can use `uvicorn` behind the scenes, allowing to make it "good enough" for some production use. Its syntax is also similar to that of Flask, so that its easy to switch to it if you have used Flask before.
 
 [streamlit](https://www.streamlit.io/) is [getting traction](https://twitter.com/streamlit/status/1272892481470857232?s=20) as well. It allows to create pretty complex UIs in pure Python. It can be used to serve ML models without further ado, but (as of today) [you can't build REST endpoints with it](https://github.com/streamlit/streamlit/issues/439).
 
@@ -29,7 +29,7 @@ So why not combine the two, and get the best of both worlds?
 As an example, let's take *image segmentation*, which is the task of assigning to each pixel of a given image to a category (for a primer on image segmentation, check out the [fast.ai course](https://course.fast.ai/videos/?lesson=3)).  
 Semantic segmentation can be done using a model pre-trained on images labeled using predefined list of categories. An example in this sense is the [DeepLabV3](https://arxiv.org/pdf/1706.05587.pdf)) model, which is already [implemented in PyTorch](https://pytorch.org/hub/pytorch_vision_deeplabv3_resnet101/).  
 
-How can we serve such a model in an a app with a streamlit frontend and FastAPI backend?
+How can we serve such a model in an app with a streamlit frontend and a FastAPI backend?
 
 One possibility is to have two services deployed in two Docker containers, orchestrated with `docker-compose`:
 
@@ -60,7 +60,7 @@ networks:
     driver: bridge
 ```
 
-The `streamlit` service serves a UI that calls (using the `requests` package) the endpoint exposed by the `fastapi` service, while UI elements (text, fileupload, buttons, display of results), are declared with calls to `streamlit`:
+The `streamlit` service serves a UI that calls (using the `requests` package) the endpoint exposed by the `fastapi` service, while UI elements (text, file upload, buttons, display of results), are declared with calls to `streamlit`:
 
 ```python
 import streamlit as st
@@ -102,7 +102,7 @@ if st.button('Get segmentation map'):
     st.image([image, segmented_image], width=300) # output dyptich
 ```
 
-The FastAPI backend calls some methods from an auxiliary module `segmentation.py`, and implements a `/segmentation` endpoint giving an image in output (handling images with FastAPI can be a bit tricky but [it can definitely be done](https://stackoverflow.com/a/55905051/4240413)):
+The FastAPI backend calls some methods from an auxiliary module `segmentation.py`, and implements a `/segmentation` endpoint giving an image in output (handling images with FastAPI [can definitely be done](https://stackoverflow.com/a/55905051/4240413)):
 
 
 ```python
