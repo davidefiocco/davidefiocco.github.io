@@ -20,7 +20,7 @@ In the recent past I have dabbled in HTML and JavaScript to create UIs, and used
 
 You may already have heard of FastAPI and streamlit, two Python libraries that lately are getting quite some attention in the applied ML community.
 
-[FastAPI](https://fastapi.tiangolo.com/) is [gaining popularity](https://twitter.com/honnibal/status/1272513991101775872) among Python frameworks. It is thoroughly documented, allows to code APIs following [OpenAPI specifications](https://en.wikipedia.org/wiki/OpenAPI_Specification) and can use `uvicorn` behind the scenes, allowing to make it "good enough" for some production use. Its syntax is also similar to that of Flask, so that its easy to switch to it if you have used Flask before.
+[FastAPI](https://fastapi.tiangolo.com/) is [gaining popularity](https://twitter.com/honnibal/status/1272513991101775872) among Python frameworks. It is thoroughly documented, allows to code APIs following [OpenAPI specifications](https://en.wikipedia.org/wiki/OpenAPI_Specification) and can use `uvicorn` behind the scenes, allowing to make it "good enough" for some production use. Its syntax is also similar to that of Flask, so that it's easy to switch to it if you have used Flask before.
 
 [streamlit](https://www.streamlit.io/) is [getting traction](https://twitter.com/streamlit/status/1272892481470857232?s=20) as well. It allows to create pretty complex UIs in pure Python. It can be used to serve ML models without further ado, but (as of today) [you can't build REST endpoints with it](https://github.com/streamlit/streamlit/issues/439).
 
@@ -150,8 +150,8 @@ The streamlit-generated page can be visited at http://localhost:8501, and after 
 
 ![streamlit](/images/2020-06-27-streamlit.png "The UI generated via streamlit")
 
-One can try to run the model on more images to experiment with its strengths and weaknesses (classes used in the segmentation are those of the [PASCAL VOC 2012 dataset](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html#introduction)).
+One can try to run the model on more images to experiment with its strengths and weaknesses (in that case, one remember that classes used in the segmentation are those of the [PASCAL VOC 2012 dataset](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html#introduction)).
 
-With essentially no changes, it's then possible to deploy the application on the web (e.g. with [Heroku](http://heroku.com/)). Note that quite some elements are still missing to consider it a full-blown production application: secure authentication (which can be enabled via FastAPI), concurrent requests under heavy load, monitoring, logging,... some of which could be dealt with in another post!  
+With essentially no changes, it's then possible to deploy the application on the web (e.g. with [Heroku](http://heroku.com/)). Note that quite some elements are still missing to consider it a full-blown production application: secure authentication (which can be enabled via FastAPI), ability to handle concurrent requests under heavy load, monitoring, logging,... some of which could be dealt with in another post!  
 
 Still, it's impressive how not-so-basic data products can be created with so little Python code!
