@@ -99,9 +99,14 @@ def process(image, server_url: str):
 
 
 if st.button('Get segmentation map'):
-    segments = process(image, url+endpoint)
-    segmented_image = Image.open(io.BytesIO(segments.content)).convert('RGB')
-    st.image([image, segmented_image], width=300) # output dyptich
+
+    if image == None:
+        st.write("Insert an image!")  # handle case with no image
+    else:
+        segments = process(image, url+endpoint)
+        segmented_image = Image.open(io.BytesIO(segments.content)).convert('RGB')
+        st.image([image, segmented_image], width=300)  # output dyptich
+
 ```
 
 The FastAPI backend calls some methods from an auxiliary module `segmentation.py`, and implements a `/segmentation` endpoint giving an image in output (handling images with FastAPI [can definitely be done](https://stackoverflow.com/a/55905051/4240413)):
