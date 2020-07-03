@@ -62,7 +62,7 @@ networks:
     driver: bridge
 ```
 
-The `streamlit` service serves a UI that calls (using the `requests` package) the endpoint exposed by the `fastapi` service, while UI elements (text, file upload, buttons, display of results), are declared with calls to `streamlit`:
+The `streamlit` service serves a UI that calls (using the `requests` package) the endpoint exposed by the `fastapi` service, while UI elements (text, file upload, buttons, display of results or lack thereof), are declared with calls to `streamlit`:
 
 ```python
 import streamlit as st
@@ -98,10 +98,13 @@ def process(image, server_url: str):
     return r
 
 
-if st.button('Get segmentation map'):
-    segments = process(image, url+endpoint)
-    segmented_image = Image.open(io.BytesIO(segments.content)).convert('RGB')
-    st.image([image, segmented_image], width=300) # output dyptich
+if st.button('Process'):
+    if image == None:
+        st.write("Insert an image!") # handle case in which no image is given in input
+    else:
+        segments = process(image, url+endpoint)
+        segmented_image = Image.open(io.BytesIO(segments.content)).convert('RGB')
+        st.image([image, segmented_image], width=300) # output dyptich
 ```
 
 The FastAPI backend calls some methods from an auxiliary module `segmentation.py`, and implements a `/segmentation` endpoint giving an image in output (handling images with FastAPI [can definitely be done](https://stackoverflow.com/a/55905051/4240413)):
