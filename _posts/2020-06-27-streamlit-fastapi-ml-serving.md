@@ -29,7 +29,7 @@ So why not combine the two, and get the best of both worlds?
 ## A simple "full-stack" application: image semantic segmentation with DeepLabV3
 
 As an example, let's take *image segmentation*, which is the task of assigning to each pixel of a given image to a category (for a primer on image segmentation, check out the [fast.ai course](https://course.fast.ai/videos/?lesson=3)).  
-Semantic segmentation can be done using a model pre-trained on images labeled using predefined list of categories. An example in this sense is the [DeepLabV3](https://arxiv.org/pdf/1706.05587.pdf)) model, which is already [implemented in PyTorch](https://pytorch.org/hub/pytorch_vision_deeplabv3_resnet101/).  
+Semantic segmentation can be done using a model pre-trained on images labeled using predefined list of categories. An example in this sense is the [DeepLabV3](https://arxiv.org/pdf/1706.05587.pdf) model, which is already [implemented in PyTorch](https://pytorch.org/hub/pytorch_vision_deeplabv3_resnet101/).  
 
 How can we serve such a model in an app with a streamlit frontend and a FastAPI backend?
 
@@ -109,7 +109,7 @@ if st.button('Get segmentation map'):
 
 ```
 
-The FastAPI backend calls some methods from an auxiliary module `segmentation.py`, and implements a `/segmentation` endpoint giving an image in output (handling images with FastAPI [can definitely be done](https://stackoverflow.com/a/55905051/4240413)):
+The FastAPI backend calls some methods from an auxiliary module `segmentation.py` (doing model inference in PyTorch), and implements a `/segmentation` endpoint giving an image in output (handling images with FastAPI [can definitely be done](https://stackoverflow.com/a/55905051/4240413)):
 
 
 ```python
