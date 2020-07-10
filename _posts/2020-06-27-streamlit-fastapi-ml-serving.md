@@ -41,7 +41,7 @@ version: '3'
 services:
   fastapi:
     build: fastapi/
-    ports: 
+    ports:
       - 8000:8000
     networks:
       - deploy_network
@@ -51,7 +51,7 @@ services:
     build: streamlit/
     depends_on:
       - fastapi
-    ports: 
+    ports:
         - 8501:8501
     networks:
       - deploy_network
@@ -109,19 +109,18 @@ if st.button('Get segmentation map'):
 
 ```
 
-The FastAPI backend calls some methods from an auxiliary module `segmentation.py` (doing model inference in PyTorch), and implements a `/segmentation` endpoint giving an image in output (handling images with FastAPI [can definitely be done](https://stackoverflow.com/a/55905051/4240413)):
-
+The FastAPI backend calls some methods from an auxiliary module `segmentation.py` (which is responsible for the model inference using PyTorch), and implements a `/segmentation` endpoint giving an image in output (handling images with FastAPI [can definitely be done](https://stackoverflow.com/questions/55873174/how-do-i-return-an-image-in-fastapi)):
 
 ```python
 from fastapi import FastAPI, File
-import tempfile
-from starlette.responses import FileResponse
+from starlette.responses import Response
+import io
 from segmentation import get_segmentator, get_segments
 
 model = get_segmentator()
 
 app = FastAPI(title="DeepLabV3 image segmentation",
-              description='''Obtain semantic segmentation maps of the image in input via DeepLabV3 implemented in PyTorch. 
+              description='''Obtain semantic segmentation maps of the image in input via DeepLabV3 implemented in PyTorch.
                            Visit this URL at port 8501 for the streamlit interface.''',
               version="0.1.0",
               )
@@ -131,9 +130,9 @@ app = FastAPI(title="DeepLabV3 image segmentation",
 def get_segmentation_map(file: bytes = File(...)):
     '''Get segmentation maps from image file'''
     segmented_image = get_segments(model, file)
-    with tempfile.NamedTemporaryFile(mode="w+b", suffix=".png", delete=False) as outfile:
-        segmented_image.save(outfile)
-        return FileResponse(outfile.name, media_type="image/png")
+    bytes_io = io.BytesIO()
+    segmented_image.save(bytes_io, format='PNG')
+    return Response(bytes_io.getvalue(), media_type="image/png")
 ```
 
 One just needs to add Dockerfiles, `pip` requirements and the core PyTorch code (stealing from the [official tutorial](https://pytorch.org/hub/pytorch_vision_deeplabv3_resnet101/)) to come up with a [complete solution](https://github.com/davidefiocco/streamlit-fastapi-model-serving/).
