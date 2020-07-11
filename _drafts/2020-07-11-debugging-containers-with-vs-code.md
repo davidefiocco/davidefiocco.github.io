@@ -111,7 +111,7 @@ and work with the newly-minted `resized_image` variable afterwards.
 
 After having performed the change, I can run a [final debugging round](/images/2020-07-11-fix.png) and check that the code runs without major hiccups. The bug seems solved! So, after having configured `git` (if this wasn't done before) [I can commit the new version of the code](/images/2020-07-11-commit.png) and push it to its GitHub repository.
 
-That's it. Note that we could keep upgrading the app indefinitely in the same fashion as above by performing more and more commits!
+That's it. Note that we could keep upgrading the app indefinitely in the same fashion, by performing more and more changes and commits!
 
 ### Sail away
 
