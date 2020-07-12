@@ -1,4 +1,4 @@
-# Debugging Python FastAPI apps in containers with Visual Studio code
+# Debugging Python FastAPI apps in Docker containers with Visual Studio Code
 
 *tl;dr: in this post I write about how a modern IDE like Visual Studio Code can ease debugging of a dockerized application [that I described before](https://davidefiocco.github.io/2020/06/27/streamlit-fastapi-ml-serving.html). The process is broken down in steps, but some basic level of familiarity with that project, working knowledge of Docker and debugging in Python is assumed.*
 
@@ -16,7 +16,7 @@ Working locally on code which eventually will be running in a container can feel
 Wouldn't it be nice to... magically enter the bottle and carry out all the desired changes to the ship while _inside the bottle_?
 The coding equivalent of this idea is _remote development in containers_. Through development in containers one can perform code changes from within a container and when done with modifications, voilà, that's it!  
 
-In what follows, I'll describe an example of development in containers using [Visual Studio Code](https://code.visualstudio.com/) (VS Code). VS Code is a popular code editor developed by Microsoft which has this capability thanks to one of its [_extensions_](https://code.visualstudio.com/docs/remote/containers). Note that some of the content here may become obsolete as new versions of the editor and extensions are released!
+In what follows, I'll describe an example of development in containers using [Visual Studio Code](https://code.visualstudio.com/) (VS Code). VS Code is a popular code editor developed by Microsoft which has this capability thanks to [one of its _extensions_](https://code.visualstudio.com/docs/remote/containers). Note that some of the content here may become obsolete as new versions of the editor and extensions are released!
 
 ## A concrete case
 
@@ -26,7 +26,7 @@ How to analyse the buggy behavior?
 How to come up with the changes needed to fix the bug?  
 How to add new features and improvements?  
 
-In what follows I tackle those questions [for my code example](https://github.com/davidefiocco/streamlit-fastapi-model-serving) and FastAPI specifically. However, with relatively minor changes, one can debug a dockerized Python app in a similar way.
+In what follows I tackle those questions for that code example and FastAPI specifically. However, with relatively minor changes, one can debug a dockerized Python app in a similar way.
 
 ### Entering the "bottle"
 
@@ -41,14 +41,14 @@ To begin (check also [this screencast](/images/2020-07-11-opening-remote-contain
 ```
 
 - open the freshly-cloned `streamlit-fastapi-model-serving` folder in VS Code;
-- install the [VS Code extension for development in containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers), and reload VS Code.
+- install the [VS Code extension for development in containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers);
 - click the green button in the bottom-left of VS Code and select the option `Remote-Containers: Reopen in Container` from the dropdown menu, selecting `From 'docker-compose.yml'` and `fastapi` as additional option (we choose `fastapi` as we assume is the one that needs a fix).
 
-In this way, we've... entered "inside the bottle"! Our VS Code instance is running within the `fastapi` container, and the code can be modified and run _within it_. Incidentally, by launching a terminal inside VS Code, we can also navigate the container filesystem.
+In this way, we've... entered "inside the bottle"! Our VS Code instance is running within the `fastapi` container, and the code can be modified and run _within it_. Incidentally, by launching a terminal inside VS Code, we can also navigate the filesystem of the container.
 
 ### Preparing to debug in the container
 
-To understand what problems the code may have, the VS Code Python debugger can be a helpful tool.
+To understand what problems the code has, the VS Code Python debugger can be a helpful tool.
 
 To start working with the debugger with FastAPI, some prerequisites need to be satisfied (see [screencast](/images/2020-07-11-enable-debugging.png) for a visual walkthrough):
 
@@ -79,7 +79,7 @@ One delightful thing is that as VS code brings up the streamlit container as wel
 
 ### Coming up with a fix
 
-Next, the idea is to come up with some code that can fix the problem. Proceeding by trial and error is allowed!
+Next, the plan is to come up with some code that can fix the problem. Proceeding by trial and error is allowed!
 
 A procedure can be roughly as follows:
 
@@ -115,8 +115,9 @@ That's it! Note that we could keep upgrading the app indefinitely in the same fa
 
 ### Sail away
 
-We've just scratched the surface of what can be done with tools like the Python debugger in containers. Feel free to send feedback via the Twitter handle below, or by [filing an issue](https://github.com/davidefiocco/davidefiocco.github.io/issues)! Here are some reference links for more material:
+I've just scratched the surface of what can be done when developing and debugging Python APIs running on Docker with tools like VS Code. Feel free to send feedback via the Twitter handle below, or by [filing an issue](https://github.com/davidefiocco/davidefiocco.github.io/issues)! Here are some reference links for more material:
 
-- Python debugging in VS Code https://code.visualstudio.com/docs/python/debugging
-- Remote development in containers https://code.visualstudio.com/docs/remote/containers
-- Debugging FastAPI apps https://fastapi.tiangolo.com/tutorial/debugging/
+- Python development in VS Code as presented at Microsoft's Build May 2020 event by [@luumelo14](https://twitter.com/luumelo14): https://channel9.msdn.com/Events/Build/2020/BOD100
+- Python debugging in VS Code: https://code.visualstudio.com/docs/python/debugging
+- Remote development in containers: https://code.visualstudio.com/docs/remote/containers
+- Debugging FastAPI apps: https://fastapi.tiangolo.com/tutorial/debugging/
