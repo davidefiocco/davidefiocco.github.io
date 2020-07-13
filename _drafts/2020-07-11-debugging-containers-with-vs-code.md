@@ -92,7 +92,7 @@ A procedure can be roughly as follows:
 
 The steps above can be repeated until the API behaves as expected. Note that there's no container rebuilding needed in any of the above, and so experimenting with any wild idea is pretty efficient.
 
-The fix I ended up with (see the corresponding [PR on GitHub](https://github.com/davidefiocco/streamlit-fastapi-model-serving/pull/5/files)) consisted in a change in my `segmentation.py`:
+One possible fix (see the corresponding [PR on GitHub](https://github.com/davidefiocco/streamlit-fastapi-model-serving/pull/5/files)) consists in changing `segmentation.py`:
 
 ```python
 def get_segments(model, binary_image):
@@ -100,7 +100,7 @@ def get_segments(model, binary_image):
     input_image = Image.open(io.BytesIO(binary_image)).convert("RGB")
 ```
 
-writing a few lines of code to perform an image resize as a preprocessing step, so to limit the size of the `input_image`, and feeding a `resized_image` to my PyTorch model instead:
+adding a few lines of code to perform an image resize, so to create a smaller `resized_image` to be fed to the PyTorch model:
 
 ```python
 def get_segments(model, binary_image, max_size=512):
