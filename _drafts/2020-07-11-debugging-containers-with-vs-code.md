@@ -2,12 +2,14 @@
 
 *tl;dr: in this post I write about how a modern IDE like Visual Studio Code can ease debugging of a dockerized application [that I described before](https://davidefiocco.github.io/2020/06/27/streamlit-fastapi-ml-serving.html). The process is broken down in steps, but some basic level of familiarity with that project, working knowledge of Docker and debugging in Python is assumed.*
 
-It makes sense to package machine learning-powered APIs within Docker containers: this practice allows collaborators (and your future self!) to run code on any machine with enough resources capable of running Docker applications, without needing to worry about operating systems, language versions and distributions, library versions, etc. 
-Docker also simplifies deployment and allows applications to be served easily in the cloud.
+When creating machine learning-powered APIs,  Docker containers offer clear advantages: 
+
+- they allow to create **reproducibile environments**: operating systems, language versions and distributions, library versions, are specified in the `Dockerfile` and other configuration files within the container (for Python `pip` packages, it's `requirements.txt`) and these will be installed automatically as the container is built. This mechanism allows collaborators (and your future self!) to easily run code on any machine with enough resources capable of running Docker applications. It also simplifies quick deployment in the cloud.
+- they allow to develop in **isolated environments**: each application can be developed in its very own "separate compartment", so that it can be run happily in isolation and not in a shared environment that may get [messier and messier and outright impossible to maintain over time](https://xkcd.com/1987/).
 
 ## How do you build a ship in a bottle?
 
-However, it can be cumbersome to modify code on a containerized application, because _outside the container_ the environment in general won't be properly configured to run it. To see how newly applied code changes affect behavior one needs to rebuild and rerun the container, and this can be slow and inefficient.
+However, it can be cumbersome to modify the code of a containerized application, because _outside the container_ there won't be an environment able to run it. To see how newly applied code changes affect behavior one needs to rebuild and rerun the container, and this can be slow and inefficient.
 
 Working locally on code which eventually will be running in a container can feel a bit like building and _upgrading_ a model ship that needs to fit inside a bottle: one can build the ship (create the initial version of the code), put it in the bottle (build the container with the code) check if it fits inside nicely (run the code successfully in the container). However, if the ship doesn't fit (the code crashes) or if one wants to upgrade it (add new functionality), one needs to take it out and then inside the bottle again (modify the code, build and rerun the container), and again, and again...
 
