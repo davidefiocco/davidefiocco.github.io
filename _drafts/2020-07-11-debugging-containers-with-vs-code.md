@@ -4,7 +4,7 @@
 
 When creating machine learning-powered APIs,  Docker containers offer clear advantages: 
 
-- they allow to make application sit in **reproducibile environments**: operating systems, language versions and distributions, library versions, are specified in the `Dockerfile` and other configuration files within the container (for Python `pip` packages, it's `requirements.txt`) and these will be installed automatically as the container is built. This mechanism allows collaborators (and your future self!) to easily run code on any machine with enough resources capable of running Docker applications. It also simplifies quick deployment in the cloud.
+- they allow to make applications sit in **reproducibile environments**: operating systems, language versions and distributions, library versions, are specified in the `Dockerfile` and other configuration files within the container (for Python `pip` packages, it's `requirements.txt`) and these will be installed automatically as the container is built. This mechanism allows collaborators (and your future self!) to easily run code on any machine with enough resources capable of running Docker applications. It also simplifies quick deployment in the cloud.
 - they allow to develop applications in **isolated environments**: each application can be developed in its very own "separate compartment", so that it can be run happily in isolation and not in a shared environment that may get [messier and messier and outright impossible to maintain over time](https://xkcd.com/1987/).
 
 ## How do you build a ship in a bottle?
