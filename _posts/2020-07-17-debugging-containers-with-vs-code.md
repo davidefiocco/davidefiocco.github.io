@@ -32,7 +32,7 @@ In what follows I tackle those questions for that code example and FastAPI speci
 
 ### Entering the "bottle"
 
-To begin (check also [this screencast](/images/2020-07-11-opening-remote-container.png) to watch how the steps below play out in VS Code):
+To begin (check also [this screencast](/images/2020-07-17-opening-remote-container.png) to watch how the steps below play out in VS Code):
 
 - make sure to have a recent version of VS Code installed (downloadable [here](https://code.visualstudio.com/download)) on a machine that can run Docker applications;
 - clone the repo to be modified. To follow along, use commands below to load the "buggy" version of my code that needs improvement:
@@ -52,7 +52,7 @@ In this way, we've... entered "inside the bottle"! The VS Code instance is runni
 
 To understand what problems the code has, the VS Code Python debugger can be a helpful tool.
 
-To start working with the debugger with FastAPI, some prerequisites need to be satisfied (see [screencast](/images/2020-07-11-enable-debugging.png) for a visual walkthrough):
+To start working with the debugger with FastAPI, some prerequisites need to be satisfied (see [screencast](/images/2020-07-17-enable-debugging.png) for a visual walkthrough):
 
 - install in the VS Code instance the [VS Code Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python), and reload VS Code;
 - select a Python interpreter, which in this case is Python 3.7.7 in `/usr/local/bin`;
@@ -66,7 +66,7 @@ Once done with the above, troubleshooting can start! To do so, focus the file `s
 
 Note that it's possible to test the app by feeding it with images via the FastAPI-generated page, and step through the code with the VS Code Python debugger (pretty cool, uh?):
 
-![debugging-fastapi](/images/2020-07-11-debugging-fastapi.png "Debugging the code in the container while firing requests via the FastAPI interface.")
+![debugging-fastapi](/images/2020-07-17-debugging-fastapi.png "Debugging the code in the container while firing requests via the FastAPI interface.")
 
 To do so I can place some breakpoints (the "red dots" on the left of the line numbers) at the lines where the Python execution should pause during debugging.
 In my case, it makes sense to place breakpoints in `segmentation.py` (which contains the core PyTorch code), as that's the part of the code where hiccups may occur.
@@ -77,7 +77,7 @@ If I try a more "challenging" [high-res image](https://upload.wikimedia.org/wiki
 
 Incidentally, as VS code brings up the streamlit container as well from `docker-compose.yml`, I can trigger requests from the streamlit UI as well:
 
-![debugging-streamlit](/images/2020-07-11-debugging-streamlit.png "Debugging the code in the container while firing requests via the streamlit interface.")
+![debugging-streamlit](/images/2020-07-17-debugging-streamlit.png "Debugging the code in the container while firing requests via the streamlit interface.")
 
 ### Coming up with a fix
 
@@ -109,7 +109,7 @@ def get_segments(model, binary_image, max_size=512):
     resized_image = input_image.resize((int(input_image.width*resize_factor), int(input_image.height*resize_factor)))
 ```
 
-After having performed the change, I can run a [final debugging round](/images/2020-07-11-fix.png) and check that the code runs without major hiccups. The bug seems indeed solved! So, after having configured `git` (if this wasn't done before) [I can commit the updated version of the code](/images/2020-07-11-commit.png) and push it to GitHub.
+After having performed the change, I can run a [final debugging round](/images/2020-07-17-fix.png) and check that the code runs without major hiccups. The bug seems indeed solved! So, after having configured `git` (if this wasn't done before) [I can commit the updated version of the code](/images/2020-07-17-commit.png) and push it to GitHub.
 
 That's it! Note that one can keep upgrading the app indefinitely in the same fashion, by performing more and more changes and commits.
 
