@@ -117,7 +117,7 @@ That's it! Note that one can keep upgrading the app indefinitely in the same fas
 
 I've just scratched the surface of what can be done when developing and debugging Python APIs running on Docker with tools like VS Code. Feel free to send feedback via the Twitter handle below, or by [filing an issue](https://github.com/davidefiocco/davidefiocco.github.io/issues)! Here are some reference links for more material:
 
-- Python development in VS Code as presented at Microsoft's Build May 2020 event by [@luumelo14](https://twitter.com/luumelo14): https://channel9.msdn.com/Events/Build/2020/BOD100
-- Python debugging in VS Code: https://code.visualstudio.com/docs/python/debugging
-- Remote development in containers: https://code.visualstudio.com/docs/remote/containers
-- Debugging FastAPI apps: https://fastapi.tiangolo.com/tutorial/debugging/
+- Python development in VS Code as presented at Microsoft's Build May 2020 event by [@luumelo14](https://twitter.com/luumelo14): <https://channel9.msdn.com/Events/Build/2020/BOD100>
+- Python debugging in VS Code: <https://code.visualstudio.com/docs/python/debugging>
+- Remote development in containers: <https://code.visualstudio.com/docs/remote/containers>
+- Debugging FastAPI apps: <https://fastapi.tiangolo.com/tutorial/debugging/>
