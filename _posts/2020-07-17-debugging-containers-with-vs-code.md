@@ -64,9 +64,9 @@ Once done with the above, troubleshooting can start! To do so, focus the file `s
 
 ### Run in debug mode, and rock the ship!
 
-Note that it's possible to test the app by feeding it with images via the FastAPI-generated page, and step through the code with the VS Code Python debugger (pretty cool, uh?):
+Note that it's possible to test the app by feeding it with images via the FastAPI-generated page, and step through the code with the VS Code Python debugger (pretty cool, uh?), as in this screencast (click [here](/images/2020-07-17-debugging-fastapi.png) for a larger version):
 
-![debugging-fastapi](/images/2020-07-17-debugging-fastapi.png "Debugging the code in the container while firing requests via the FastAPI interface. Click [here](/images/2020-07-17-debugging-fastapi.png) for a larger version of the screencast.")
+![debugging-fastapi](/images/2020-07-17-debugging-fastapi.png "Debugging the code in the container while firing requests via the FastAPI interface.")
 
 To do so I can place some breakpoints (the "red dots" on the left of the line numbers) at the lines where the Python execution should pause during debugging.
 In my case, it makes sense to place breakpoints in `segmentation.py` (which contains the core PyTorch code), as that's the part of the code where hiccups may occur.
@@ -75,9 +75,9 @@ If I pass to the http://localhost:8000/docs FastAPI frontend an "easy" image (sa
 
 If I try a more "challenging" [high-res image](https://upload.wikimedia.org/wikipedia/commons/4/41/Left_side_of_Flying_Pigeon.jpg) instead, the debugger execution hangs a very very long time at the line where the model is invoked: thanks to the debugger, I discovered that something fishy is going on there that needs a fix! The debugger can now be stopped with Shift+F5.
 
-Incidentally, as VS code brings up the streamlit container as well from `docker-compose.yml`, I can trigger requests from the streamlit UI as well:
+Incidentally, as VS code brings up the streamlit container as well from `docker-compose.yml`, I can trigger requests from the streamlit UI as well, as below (click [here](/images/2020-07-17-debugging-streamlit.png) for a larger version):
 
-![debugging-streamlit](/images/2020-07-17-debugging-streamlit.png "Debugging the code in the container while firing requests via the streamlit interface. Click [here](/images/2020-07-17-debugging-streamlit.png) for a larger version of the screencast.")
+![debugging-streamlit](/images/2020-07-17-debugging-streamlit.png "Debugging the code in the container while firing requests via the streamlit interface.")
 
 ### Coming up with a fix
 
