@@ -2,14 +2,14 @@
 
 *tl;dr: in this post I write about how a modern IDE like Visual Studio Code can ease debugging of a dockerized application [that I described before](https://davidefiocco.github.io/2020/06/27/streamlit-fastapi-ml-serving.html). The process is broken down in steps, but some basic level of familiarity with that project, working knowledge of Docker and debugging in Python is assumed.*
 
-When creating machine learning-powered APIs,  Docker containers offer clear advantages: 
+When developing machine learning-powered applications, encapsulating them in Docker containers offers clear advantages: 
 
-- they allow to make applications sit in **reproducibile environments**: operating systems, language versions and distributions, library versions, are specified in the `Dockerfile` and other configuration files within the container (for Python `pip` packages, it's `requirements.txt`) and these will be installed automatically as the container is built. This mechanism allows collaborators (and your future self!) to easily run code on any machine with enough resources capable of running Docker applications. It also simplifies quick deployment in the cloud.
-- they allow to develop applications in **isolated environments**: each application can be developed in its very own "separate compartment", so that it can be run happily in isolation and not in a shared environment that may get [messier and messier and outright impossible to maintain over time](https://xkcd.com/1987/).
+- they allow apps to sit in **reproducibile environments**: operating systems, language versions and distributions, library versions, are specified in the `Dockerfile` and other configuration files within the container (for Python `pip` packages, it's `requirements.txt`) and these will be installed automatically as the container is built. This mechanism allows collaborators (and your future self!) to easily run code on any machine with enough resources capable of running Docker applications. It also simplifies quick deployment in the cloud.
+- they allow to develop apps in **isolated environments**: each app can be developed in its very own "separate compartment", can run happily in isolation and not in a shared environment that may get [messier and messier and outright impossible to maintain over time](https://xkcd.com/1987/).
 
 ## How do you build a ship in a bottle?
 
-However, it can be cumbersome to modify the code of a containerized application, because _outside the container_ there won't be an environment able to run it. To see how newly applied code changes affect behavior one needs to rebuild and rerun the container, and this can be slow and inefficient.
+There's a small catch though: it can be cumbersome to develop code of a containerized application, because _outside the container_ there won't be an environment able to run it. For example, to see how newly applied code changes affect the behavior of the app one needs to rebuild and rerun the container, and this can be slow and inefficient.
 
 Working locally on code which eventually will be running in a container can feel a bit like building and _upgrading_ a model ship that needs to fit inside a bottle: one can build the ship (create the initial version of the code), put it in the bottle (build the container with the code) check if it fits inside nicely (run the code successfully in the container). However, if the ship doesn't fit (the code crashes) or if one wants to upgrade it (add new functionality), one needs to take it out and then inside the bottle again (modify the code, build and rerun the container), and again, and again...
 
@@ -18,13 +18,13 @@ Working locally on code which eventually will be running in a container can feel
 Wouldn't it be nice to... magically enter the bottle and carry out all the desired changes to the ship while _inside the bottle_?
 The coding equivalent of this idea is _remote development in containers_. Through development in containers one can perform code changes from within a container and when done with modifications, voilà, that's it!  
 
-In what follows, I'll describe an example of development in containers using [Visual Studio Code](https://code.visualstudio.com/) (VS Code). VS Code is a popular code editor developed by Microsoft which has this capability thanks to [one of its _extensions_](https://code.visualstudio.com/docs/remote/containers). Note that some of the content here may become obsolete as new versions of the editor and extensions are released!
+In what follows, I'll describe an example of development in containers using [Visual Studio Code](https://code.visualstudio.com/) (VS Code). VS Code is a popular code editor developed by Microsoft which enables development in containers via [one of its _extensions_](https://code.visualstudio.com/docs/remote/containers). Note that some of the content here may become obsolete as new versions of the editor and extensions are released!
 
 ## A concrete case
 
 I recently published on GitHub a [simple example of dockerized API](https://github.com/davidefiocco/streamlit-fastapi-model-serving) based on FastAPI and streamlit. Very soon somebody noticed that it had a bug that make it struggle when handling some images and filed an [issue](https://github.com/davidefiocco/streamlit-fastapi-model-serving/issues/4). My "ship in the bottle" had a flaw that needed a fix.
 
-How to analyse the buggy behavior?  
+How to analyze the buggy behavior?  
 How to come up with the changes needed to fix the bug?  
 How to add new features and improvements?  
 
@@ -64,7 +64,7 @@ Once done with the above, troubleshooting can start! To do so, focus the file `s
 
 ### Run in debug mode, and rock the ship!
 
-What's pretty cool is that it's possible to test the app by feeding it with images via the FastAPI-generated page, and step through the code with the VS Code Python debugger:
+Note that it's possible to test the app by feeding it with images via the FastAPI-generated page, and step through the code with the VS Code Python debugger (pretty cool, uh?):
 
 ![debugging-fastapi](/images/2020-07-11-debugging-fastapi.png "Debugging the code in the container while firing requests via the FastAPI interface.")
 
