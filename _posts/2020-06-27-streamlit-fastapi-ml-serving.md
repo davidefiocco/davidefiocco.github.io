@@ -1,6 +1,6 @@
 # Machine learning model serving in Python using FastAPI and streamlit
 
-*tl;dr: go straight to the [example code](https://github.com/davidefiocco/streamlit-fastapi-model-serving/)!*
+*tl;dr: streamlit, FastAPI and Docker combined enable the creation of both the frontend and backend for machine learning applications, in pure Python. Go straight to the [example code](https://github.com/davidefiocco/streamlit-fastapi-model-serving/)!*
 
 In my current job I train machine learning models. When experiments show that one of these models can solve some need of the company, we sometimes serve it to users in the form of a "prototype" deployed on internal servers. While such a prototype may not be production-ready yet, it can be useful to show to users strengths and weaknesses of the proposed solution and get feedback so to release better iterations.
 
