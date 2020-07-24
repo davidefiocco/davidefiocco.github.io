@@ -56,7 +56,7 @@ We may want to serve it to users!
 
 ---
 
-### Idea was well received by the community
+### The idea was well received by the community
 
  <div class="tweet" data-src="https://twitter.com/monodavide/status/1276913357388382212?s=20" ></div>
 
