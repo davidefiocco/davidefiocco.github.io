@@ -50,7 +50,7 @@ We may want to serve it to users!
 
 ### A solution using streamlit, FastAPI and Docker
 
-- `streamlit`: to build the UI in pure Python
+- `streamlit`: to build the UI
 - `fastapi`: to build the OpenAPI backend
 - `docker-compose`: to orchestrate the two
 
