@@ -14,9 +14,18 @@ Davide Fiocco
 
 ---
 
-### Machine learning can do cool stuff!
+### Machine learning is cool!
 
-Consider _image segmentation_:
+Consider _sentiment analysis_ in NLP:
+
+- _This talk is already boring_ $\rightarrow$ negative
+- _This talk looks promising!_ $\rightarrow$ positive 
+
+--
+
+### Machine learning is cool!
+
+Consider _image segmentation_ in CV:
 
 <section>
 <img width="300" src="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/segexamples/images/21.jpg">
@@ -26,51 +35,141 @@ Consider _image segmentation_:
 
 --
 
-### We have trained a machine learning model... what now? 
-
-We may want to serve it to users!
+### Example: DeepLabV3 in PyTorch
 
 ---
 
+### We have a trained model... what now? 
+
+Let's serve a prototype to users!
+
+--
+
 ### We need a frontend...
 
-![](../images/2020-06-27-streamlit.png)
+<iframe class="stretch" data-src="http://localhost:8501" height=20%></iframe>
 
 --
 
 ### ...and a backend!
 
-![](../images/2020-06-27-fastapi.png)
+<iframe class="stretch" data-src="http://localhost:8000/docs" height=20%></iframe>
 
 ---
 
-### Wouldn't it be nice to do it in pure Python?
+### Wouldn't it be nice to build it all in Python?
 
----
-
-### A solution using streamlit, FastAPI and Docker
-
-- `streamlit`: to build the UI
-- `fastapi`: to build the OpenAPI backend
-- `docker-compose`: to orchestrate the two
-
----
-
-### The idea was well received by the community
-
- <div class="tweet" data-src="https://twitter.com/monodavide/status/1276913357388382212?s=20" ></div>
+(and without writing much code?)
 
 --
 
-![](../images/2020-06-27-github.png)
+### A solution using streamlit, FastAPI and Docker
+
+- `streamlit`: to build the frontend
+- `fastapi`: to build the OpenAPI backend
+- `docker-compose`: to orchestrate the two
+
+--
+
+![Repo](../images/2020-06-27-github.png)
 
 ---
 
-## You will learn about:
+## Streamlit
 
-- a problem that can be solved with ML
-- what `fastapi` and `streamlit` can do
-- code of dockerized app with a frontend and backend
+<div class="tweet" data-src="https://twitter.com/streamlit/status/1272892481470857232" height=80%></div>
+
+--
+
+### Streamlit features
+
+---
+
+## FastAPI
+
+<iframe class="stretch" data-src="https://fastapi.tiangolo.com/" height=20%></iframe>
+
+--
+
+### FastAPI features
+
+---
+
+![Morpheus](https://i.kym-cdn.com/photos/images/original/001/186/986/75c.gif){:height="150%" width="150%"}
+
+---
+
+## Architecture
+
+--
+
+![](../images/containers-diagram.png){:width="80%"} <!-- .element: style="float: right; width: 20%" -->
+
+```yaml
+version: '3'
+
+services:
+
+  streamlit:
+    build: streamlit/
+    depends_on:
+      - fastapi
+    ports: 
+        - 8501:8501
+    networks:
+      - deploy_network
+    container_name: streamlit
+
+  fastapi:
+    build: fastapi/
+    ports: 
+      - 8000:8000
+    networks:
+      - deploy_network
+    container_name: fastapi
+
+networks:
+  deploy_network:
+    driver: bridge
+
+``` 
+<!-- .element: style="width: 50%" -->
+
+--
+
+Diagram with same container architecture and file structure
+
+---
+
+## Backend
+
+--
+
+PyTorch code and tutorial reference
+
+--
+
+Page with FastAPI interface and code
+
+---
+
+## Frontend
+
+--
+
+Page with streamlit interface and code
+
+---
+
+## Running the app
+
+--
+
+### Running the app locally
+
+--
+
+### Deploying the app on the web (on Heroku)
 
 ---
 
@@ -78,3 +177,7 @@ We may want to serve it to users!
 
 - blogpost: https://davidefiocco.github.io/2020/06/27/streamlit-fastapi-ml-serving.html
 - GitHub: https://github.com/davidefiocco/streamlit-fastapi-model-serving
+
+---
+
+## Gracias! Thanks!
