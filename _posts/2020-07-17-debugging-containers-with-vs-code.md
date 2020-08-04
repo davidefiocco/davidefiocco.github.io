@@ -1,13 +1,13 @@
 # Debugging Python FastAPI apps in Docker containers with Visual Studio Code
 
-*tl;dr: a modern IDE like Visual Studio Code can ease debugging of a dockerized application like [the one I described before](https://davidefiocco.github.io/2020/06/27/streamlit-fastapi-ml-serving.html). The process is broken down in steps, but some basic level of familiarity with that project, working knowledge of Docker and debugging in Python is assumed.*
+*tl;dr: a modern IDE like Visual Studio Code can ease development and debugging of a dockerized application like [the one I described before](https://davidefiocco.github.io/2020/06/27/streamlit-fastapi-ml-serving.html). The process is broken down in steps, but some basic level of familiarity with that project, working knowledge of Docker and debugging in Python is assumed.*
 
 When developing machine learning-powered applications, encapsulating them in Docker containers offers clear advantages: 
 
 - Docker allows apps to sit in **reproducible environments**: operating systems, language versions and distributions, library versions, are specified in the `Dockerfile` and other configuration files within the container (for example, Python packages are often specified in `requirements.txt`). The environment is thus configured as the container is built. This mechanism allows collaborators (and your future self!) to easily run code on any machine with enough resources capable of running Docker, and also simplifies quick deployment in the cloud.
-- Docker allows to develop apps in **isolated environments**: each app can be developed in its very own "separate compartment", can run happily in isolation and not in a shared environment that may get [messier and messier and outright impossible to maintain over time](https://xkcd.com/1987/).
+- Docker allows to develop apps in **isolated environments**: each app can be developed and run in its very own "separate compartment", not needing to share a environment that may get [messier and messier and outright impossible to maintain over time](https://xkcd.com/1987/).
 
-## How do you build a ship in a bottle?
+## How do you fix a ship if it's inside a bottle?
 
 There's a small catch though: it can be cumbersome to develop code of a containerized application, because _outside the container_ there won't be an environment able to run it. For example, to see how newly applied code changes affect the behavior of the app one would need to rebuild and rerun the container, and this can be slow and inefficient.
 
@@ -22,7 +22,7 @@ In what follows, I'll describe an example of development in containers using [Vi
 
 ## A concrete case
 
-I recently published on GitHub a [simple example of dockerized API](https://github.com/davidefiocco/streamlit-fastapi-model-serving) based on [FastAPI](https://fastapi.tiangolo.com/) and [streamlit](https://www.streamlit.io/). Very soon somebody noticed that the code was affected by a [bug](https://github.com/davidefiocco/streamlit-fastapi-model-serving/issues/4) that made it struggle when handling some images. My "ship in the bottle" had a flaw that needed a fix.
+I recently published on GitHub a [simple example of dockerized API](https://github.com/davidefiocco/streamlit-fastapi-model-serving) based on [FastAPI](https://fastapi.tiangolo.com/) and [streamlit](https://www.streamlit.io/). Very soon somebody noticed that the code was affected by a [bug](https://github.com/davidefiocco/streamlit-fastapi-model-serving/issues/4) that made it struggle when handling some input. My "ship in the bottle" had a flaw that needed a fix.
 
 How to analyze the buggy behavior?  
 How to come up with the changes needed to fix the bug?  
