@@ -14,28 +14,65 @@ Davide Fiocco
 
 ---
 
-### Machine learning is cool!
+### About me
 
-Consider _sentiment analysis_ in NLP:
+- Senior data scientist at Frontiers
 
-- _This talk is already boring_ $\rightarrow$ negative
-- _This talk looks promising!_ $\rightarrow$ positive 
+### Frontiers
+
+- Open access publisher, 500+ employees
+- Offices in Lausanne, Madrid, London, Seattle and Beijing
+- Processing 30k+ scientific articles / year
+- Python used in ML and big data pipelines
+
+---
+
+<iframe class="stretch" data-src="https://www.frontiersin.org/" height=20%></iframe>
+
+---
+
+### Machine learning is powerful!
 
 --
 
-### Machine learning is cool!
+### _Sentiment analysis_ (NLP):
 
-Consider _image segmentation_ in CV:
+- "_Granada is really beautiful!_" $\rightarrow$ positive 
+- "_Too bad we're not there together_" $\rightarrow$ negative
+
+
+--
+
+### _Image segmentation_ (CV):
 
 <section>
-<img width="300" src="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/segexamples/images/21.jpg">
+<img width="250" src="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/segexamples/images/21.jpg">
 
-<img width="300" src="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/segexamples/images/21_class.png">
+$\downarrow$
+
+<img width="250" src="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/segexamples/images/21_class.png">
 </section>
 
 --
 
-### Example: DeepLabV3 in PyTorch
+### Image segmentation in PyTorch:
+
+Life is easy with pretrained models:
+
+```python
+import torch
+model = torch.hub.load('pytorch/vision:v0.6.0',
+                       'deeplabv3_resnet101',
+                       pretrained=True)
+model.eval()
+```
+after input preprocessing we get results with:
+
+```python
+with torch.no_grad():
+    output = model(input_batch)['out'][0]
+output_predictions = output.argmax(0)
+```
 
 ---
 
@@ -69,15 +106,11 @@ Let's serve a prototype to users!
 - `fastapi`: to build the OpenAPI backend
 - `docker-compose`: to orchestrate the two
 
---
-
-![Repo](../images/2020-06-27-github.png)
-
 ---
 
 ## Streamlit
 
-<div class="tweet" data-src="https://twitter.com/streamlit/status/1272892481470857232" height=80%></div>
+<iframe class="stretch" data-src="https://docs.streamlit.io/en/stable/" height=20%></iframe>
 
 --
 
@@ -97,87 +130,42 @@ Let's serve a prototype to users!
 
 ![Morpheus](https://i.kym-cdn.com/photos/images/original/001/186/986/75c.gif){:height="150%" width="150%"}
 
+--
+
+![Repo](../images/2020-06-27-github.png)
+
 ---
 
 ## Architecture
 
---
-
-![](../images/containers-diagram.png){:width="80%"} <!-- .element: style="float: right; width: 20%" -->
-
-```yaml
-version: '3'
-
-services:
-
-  streamlit:
-    build: streamlit/
-    depends_on:
-      - fastapi
-    ports: 
-        - 8501:8501
-    networks:
-      - deploy_network
-    container_name: streamlit
-
-  fastapi:
-    build: fastapi/
-    ports: 
-      - 8000:8000
-    networks:
-      - deploy_network
-    container_name: fastapi
-
-networks:
-  deploy_network:
-    driver: bridge
-
-``` 
-<!-- .element: style="width: 50%" -->
-
---
-
-Diagram with same container architecture and file structure
+![Architecture](../images/containers-diagram.png =250x)
 
 ---
 
-## Backend
-
---
-
-PyTorch code and tutorial reference
-
---
-
-Page with FastAPI interface and code
+## (code tour with VS Code)
 
 ---
 
-## Frontend
+## Running the app (locally)
+
+```bash
+docker-compose build
+docker-compose up
+```
 
 --
 
-Page with streamlit interface and code
+## Deploying the app on the web (on Heroku)
 
 ---
 
-## Running the app
-
---
-
-### Running the app locally
-
---
-
-### Deploying the app on the web (on Heroku)
+## Gracias! Thanks!
 
 ---
 
 ## References
 
-- blogpost: https://davidefiocco.github.io/2020/06/27/streamlit-fastapi-ml-serving.html
 - GitHub: https://github.com/davidefiocco/streamlit-fastapi-model-serving
+- blogpost: https://davidefiocco.github.io/2020/06/27/streamlit-fastapi-ml-serving.html
 
----
 
-## Gracias! Thanks!
