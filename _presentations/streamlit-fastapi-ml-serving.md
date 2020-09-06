@@ -16,18 +16,21 @@ Davide Fiocco
 
 ### About me
 
-- Senior data scientist at Frontiers
-
-### Frontiers
-
-- Open access publisher, 500+ employees
-- Offices in Lausanne, Madrid, London, Seattle and Beijing
-- Processing 30k+ scientific articles / year
-- Python used in ML and big data pipelines
+- Started working with NumPy ~10 years ago
+- Currently senior data scientist at Frontiers
 
 ---
 
 <iframe class="stretch" data-src="https://www.frontiersin.org/" height=20%></iframe>
+
+--
+
+### Frontiers
+
+- Open access publisher, 500+ employees
+- In Lausanne, Madrid, London, Seattle, Beijing
+- Processing 30k+ scientific articles / year
+- Python used in ML and big data pipelines
 
 ---
 
@@ -116,6 +119,10 @@ Let's serve a prototype to users!
 
 ### Streamlit features
 
+- Design of simple UIs with low code
+- Intuitive
+- For comparisons, check https://plotly.com/comparing-dash-shiny-streamlit/
+
 ---
 
 ## FastAPI
@@ -125,6 +132,12 @@ Let's serve a prototype to users!
 --
 
 ### FastAPI features
+
+- Concise syntax to add OpenAPI documentation
+- Docker image with sensible defaults for deployment
+- Easy to use, similar to Flask, 20k+ stars
+- Comprehensive documentation
+- For comparisons, check https://fastapi.tiangolo.com/alternatives/
 
 ---
 
@@ -138,11 +151,11 @@ Let's serve a prototype to users!
 
 ## Architecture
 
-![Architecture](../images/containers-diagram.png =250x)
+![Architecture](../images/containers-diagram.png =800x)
 
----
+--
 
-## (code tour with VS Code)
+## Code tour
 
 ---
 
