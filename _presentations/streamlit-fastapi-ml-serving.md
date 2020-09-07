@@ -93,7 +93,8 @@ Let's serve a prototype to users!
 
 ### ...and a backend!
 
-<iframe class="stretch" data-src="http://localhost:8000/docs" height=20%></iframe>
+<iframe class="stretch" data-src="http://localhost:8000/docs" height=20% style="background: #ffffff;></iframe>
+
 
 ---
 
