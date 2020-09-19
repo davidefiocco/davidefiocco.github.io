@@ -1,7 +1,10 @@
 ---
 theme : "night"
 highlightTheme: "monokai"
+enableMenu: false
+enableChalkboard: false
 slideNumber: false
+transition: "slide"
 title: "Machine learning model serving with streamlit and FastAPI"
 author: "Davide Fiocco @monodavide"
 logoImg: 
@@ -17,19 +20,19 @@ Davide Fiocco
 ### About me
 
 - Started working with NumPy/SciPy in 2008
-- (lots of data analyses in Python and R)
 - Currently senior data scientist at Frontiers
 
 ---
 
 <iframe class="stretch" data-src="https://www.frontiersin.org/" height=20%></iframe>
 
+<https://www.frontiersin.org>
+
 --
 
 ### Frontiers
 
-- Open access publisher, 500+ employees
-- In Lausanne, Madrid, London, Seattle, Beijing
+- 500+ employees in Lausanne, Madrid, London, Seattle, Beijing
 - Processing 60k+ scientific articles / year
 - Python used in ML and big data pipelines
 
@@ -41,8 +44,10 @@ Davide Fiocco
 
 ### _Sentiment analysis_ (NLP):
 
-- "_Granada is really beautiful!_" $\rightarrow$ positive 
-- "_Too bad we're not there together_" $\rightarrow$ negative
+- "_Granada is really beautiful!_" $\rightarrow$ 😊
+- "_Too bad we're not there together_" $\rightarrow$ 😢
+
+See e.g. <https://github.com/huggingface/torchMoji>
 
 --
 
@@ -81,19 +86,19 @@ output_predictions = output.argmax(0)
 
 ### We have a trained model... what now? 
 
-Let's serve a prototype to users!
+Let's make it available to people and other applications!
 
 --
 
 ### We need a frontend...
 
-<iframe class="stretch" data-src="http://localhost:8501" height=20%></iframe>
+![Repo](../images/2020-06-27-streamlit.png)
 
 --
 
 ### ...and a backend
 
-<iframe class="stretch" data-src="http://localhost:8000/docs" height=20% style="background: #ffffff;></iframe>
+![Repo](../images/2020-06-27-fastapi.png)
 
 
 ---
@@ -112,7 +117,7 @@ Let's serve a prototype to users!
 
 ---
 
-## Streamlit
+## streamlit
 
 <iframe class="stretch" data-src="https://docs.streamlit.io/en/stable/" height=20%></iframe>
 
@@ -120,9 +125,9 @@ Let's serve a prototype to users!
 
 ### streamlit features
 
-- Design of simple UIs concisely
-- Intuitive to use
-- 10k+ starts on GitHub
+- Design of simple UIs with little code
+- No JavaScript, no HTML, intuitive to use
+- 10k+ stars on GitHub
 - For comparisons, check https://plotly.com/comparing-dash-shiny-streamlit/
 
 ---
@@ -135,7 +140,7 @@ Let's serve a prototype to users!
 
 ### FastAPI features
 
-- Concise syntax to add OpenAPI documentation
+- API with documentation with little code
 - Easy to use, similar to Flask
 - Comprehensive documentation
 - 20k+ stars on GitHub
@@ -157,20 +162,20 @@ Let's serve a prototype to users!
 
 --
 
-## Code tour
+## Code tour!
 
----
+--
 
-## Running the app (locally)
+### Running the app (locally)
 
 ```bash
 docker-compose build
 docker-compose up
 ```
 
---
+### Running the app on the web
 
-## Deploying the app on the web (on Heroku)
+- Use Heroku + Dockhero
 
 ---
 
