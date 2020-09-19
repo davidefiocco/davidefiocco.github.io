@@ -92,13 +92,13 @@ Let's make it available to people and other applications!
 
 ### We need a frontend...
 
-![Repo](../images/2020-06-27-streamlit.png)
+![frontend](../images/2020-06-27-streamlit.png =x600)
 
 --
 
 ### ...and a backend
 
-![Repo](../images/2020-06-27-fastapi.png)
+![backend](../images/2020-06-27-fastapi.png =x600)
 
 
 ---
