@@ -16,7 +16,8 @@ Davide Fiocco
 
 ### About me
 
-- Started working with NumPy ~10 years ago
+- Started working with NumPy/SciPy in 2008
+- (lots of data analyses in Python and R)
 - Currently senior data scientist at Frontiers
 
 ---
@@ -29,7 +30,7 @@ Davide Fiocco
 
 - Open access publisher, 500+ employees
 - In Lausanne, Madrid, London, Seattle, Beijing
-- Processing 30k+ scientific articles / year
+- Processing 60k+ scientific articles / year
 - Python used in ML and big data pipelines
 
 ---
@@ -42,7 +43,6 @@ Davide Fiocco
 
 - "_Granada is really beautiful!_" $\rightarrow$ positive 
 - "_Too bad we're not there together_" $\rightarrow$ negative
-
 
 --
 
@@ -91,7 +91,7 @@ Let's serve a prototype to users!
 
 --
 
-### ...and a backend!
+### ...and a backend
 
 <iframe class="stretch" data-src="http://localhost:8000/docs" height=20% style="background: #ffffff;></iframe>
 
@@ -118,10 +118,11 @@ Let's serve a prototype to users!
 
 --
 
-### Streamlit features
+### streamlit features
 
-- Design of simple UIs with low code
-- Intuitive
+- Design of simple UIs concisely
+- Intuitive to use
+- 10k+ starts on GitHub
 - For comparisons, check https://plotly.com/comparing-dash-shiny-streamlit/
 
 ---
@@ -135,9 +136,9 @@ Let's serve a prototype to users!
 ### FastAPI features
 
 - Concise syntax to add OpenAPI documentation
-- Docker image with sensible defaults for deployment
-- Easy to use, similar to Flask, 20k+ stars
+- Easy to use, similar to Flask
 - Comprehensive documentation
+- 20k+ stars on GitHub
 - For comparisons, check https://fastapi.tiangolo.com/alternatives/
 
 ---
