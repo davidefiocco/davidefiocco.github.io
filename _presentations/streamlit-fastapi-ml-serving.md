@@ -92,13 +92,13 @@ Let's make it available to people and other applications!
 
 ### We need a frontend...
 
-![frontend](../images/2020-06-27-streamlit.png =x600)
+![frontend](../images/2020-06-27-streamlit.png =x500)
 
 --
 
 ### ...and a backend
 
-![backend](../images/2020-06-27-fastapi.png =x600)
+![backend](../images/2020-06-27-fastapi.png =x500)
 
 
 ---
@@ -163,19 +163,6 @@ Let's make it available to people and other applications!
 --
 
 ## Code tour!
-
---
-
-### Running the app (locally)
-
-```bash
-docker-compose build
-docker-compose up
-```
-
-### Running the app on the web
-
-- Use Heroku + Dockhero
 
 ---
 
