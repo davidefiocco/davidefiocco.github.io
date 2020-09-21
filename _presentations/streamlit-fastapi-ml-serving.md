@@ -7,7 +7,7 @@ slideNumber: false
 transition: "slide"
 title: "Machine learning model serving with streamlit and FastAPI"
 author: "Davide Fiocco @monodavide"
-logoImg: 
+logoImg: "images/logo-pycones2020.png"
 ---
 
 ## Serving machine learning models with streamlit and FastAPI
@@ -19,7 +19,7 @@ Davide Fiocco
 
 ### About me
 
-- Started working with NumPy/SciPy in 2008
+- Started with Python in 2008 (physics research)
 - Currently senior data scientist at Frontiers
 
 ---
@@ -32,9 +32,9 @@ Davide Fiocco
 
 ### Frontiers
 
-- 500+ employees in Lausanne, Madrid, London, Seattle, Beijing
+- 500+ employees in Lausanne, **Madrid**, London, Seattle, Beijing
 - Processing 60k+ scientific articles / year
-- Python used in ML and big data pipelines
+- Python in big data pipelines and ML
 
 ---
 
@@ -109,7 +109,7 @@ Let's make it available to people and other applications!
 
 --
 
-### A solution using streamlit, FastAPI and Docker
+### A solution using Python and Docker
 
 - `streamlit`: to build the frontend
 - `fastapi`: to build the OpenAPI backend
@@ -162,7 +162,7 @@ Let's make it available to people and other applications!
 
 --
 
-## Code tour!
+## Code walkthrough!
 
 ---
 
