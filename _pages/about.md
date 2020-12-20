@@ -1,3 +1,7 @@
+---
+permalink: /about/
+---
+
 # About
 
 Hi, I'm Davide. Currently I am a data scientist at [Frontiers](https://www.frontiersin.org).
