@@ -1,6 +1,6 @@
 # Debugging Python FastAPI apps in Docker containers with Visual Studio Code
 
-*tl;dr: a modern IDE like Visual Studio Code can ease development and debugging of a dockerized application like [the one I described before](https://davidefiocco.github.io/2020/06/27/streamlit-fastapi-ml-serving.html). The process is broken down in steps, but some basic level of familiarity with that project, working knowledge of Docker and debugging in Python is assumed.*
+*tl;dr: a modern IDE like Visual Studio Code can ease development and debugging of a dockerized application like [the one I described before](https://davidefiocco.github.io/2020/06/27/streamlit-fastapi-ml-serving). The process is broken down in steps, but some basic level of familiarity with that project, working knowledge of Docker and debugging in Python is assumed.*
 
 When developing machine learning-powered applications, encapsulating them in Docker containers offers clear advantages: 
 
