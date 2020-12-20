@@ -7,7 +7,7 @@ slideNumber: false
 transition: "slide"
 title: "Machine learning model serving with streamlit and FastAPI"
 author: "Davide Fiocco @monodavide"
-logoImg: 
+logoImg: "images/logo-pycones2020.png"
 ---
 
 ## Serving machine learning models with streamlit and FastAPI
