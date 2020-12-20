@@ -1,5 +1,6 @@
 ---
 title: Debugging Python FastAPI apps in Docker containers with Visual Studio Code
+excerpt: Visual Studio code offers handy functionality to debug dockerized FastAPI apps, check it out!
 ---
 
 *tl;dr: a modern IDE like Visual Studio Code can ease development and debugging of a dockerized application like [the one I described before](https://davidefiocco.github.io/streamlit-fastapi-ml-serving). The process is broken down in steps, but some basic level of familiarity with that project, working knowledge of Docker and debugging in Python is assumed.*
