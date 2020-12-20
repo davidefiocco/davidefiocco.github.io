@@ -1,4 +1,6 @@
-# Machine learning model serving in Python using FastAPI and streamlit
+---
+title: Machine learning model serving in Python using FastAPI and streamlit
+---
 
 *tl;dr: streamlit, FastAPI and Docker combined enable the creation of both the frontend and backend for machine learning applications, in pure Python. Go straight to the [example code](https://github.com/davidefiocco/streamlit-fastapi-model-serving/)!*
 
