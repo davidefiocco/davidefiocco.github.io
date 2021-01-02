@@ -130,7 +130,7 @@ Let's examine more in detail a case in which:
 - $N$ is on the order of 1M;
 - search is performed in Docker container running on CPU (single machine) and very few GBs of RAM are available. We can rely with a machine with more RAM to build the index instead;
 - accuracy is more important than speed: ideally we'd like to have exact results;
-- We plan to perform several searches (>10000) in the lifetime of an index.
+- we plan to perform several searches (>10000) in the lifetime of an index.
 
 To play with a realistic dataset, let's use the GIST 1M vector dataset ([GIST vectors](http://people.csail.mit.edu/torralba/code/spatialenvelope/) have been devised in computer vision to represent entire images). We can download and inflate the dataset on a Linux shell using `wget` and `tar`:
 
