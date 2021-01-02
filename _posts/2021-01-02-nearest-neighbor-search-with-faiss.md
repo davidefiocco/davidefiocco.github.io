@@ -128,7 +128,7 @@ The `faiss` [wiki](https://github.com/facebookresearch/faiss/wiki) on GitHub can
 Let's examine more in detail a case in which:
 
 - $N$ is on the order of 1M;
-- search is performed in Docker container running on CPU (single machine) and very few GBs of RAM are available. We can rely with a machine with more RAM to build the index instead;
+- search is performed in Docker container running on CPU (single machine) and very few GBs of RAM are available. We can instead rely on a machine with more RAM to build the index;
 - accuracy is more important than speed: ideally we'd like to have exact results;
 - we plan to perform several searches (>10000) in the lifetime of an index.
 
