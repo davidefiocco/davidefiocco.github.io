@@ -4,7 +4,6 @@ excerpt: Nearest-neighbor search in vector spaces in very useful in a variety of
 classes: wide
 ---
 
-
 *tl;dr: The `faiss` library allows to perform nearest-neighbor search in an efficient way, scaling to several millions dense vectors. Go straight to the [example code](https://github.com/davidefiocco/faiss-on-disk-example)!*
 
 ## Vector embeddings and search
