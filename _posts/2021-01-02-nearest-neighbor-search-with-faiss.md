@@ -38,7 +38,7 @@ In what follows we'll analyze solution using `numpy`, `scikit-learn` and finally
 
 ### Linear search using `numpy`
 
-One simple strategy is to compute the distance from `xq` to _every other vector_ in S, and identify the $k$ vectors that have minimum distance. As all the possible matches are evaluated, this is also called _brute force_ search.
+One simple strategy is to compute the distance from `xq` to _every other vector_ in $S$, and identify the $k$ vectors that have minimum distance. As all the possible matches are evaluated, this is also called _brute force_ search.
 This operation requires the computation of $N$ distances and then finding the bottom $k$ values.
 
 Assuming that we can read vectors in $S$ from a csv file into an array `xb`, we can compute the indices of the k-nearest neighbors with
