@@ -1,12 +1,9 @@
 ---
-title: First steps with `faiss` for k-nearest-neighbor search in large search spaces
-excerpt: Nearest-neighbor search in vector spaces in very useful in a variety of tasks. How to tackle this when dealing with A LOT of vectors?
+title: First steps with Faiss for k-nearest-neighbor search in large search spaces
+excerpt: Nearest-neighbor search in vector spaces in very useful in a variety of tasks. How to tackle this when dealing with A LOT of vectors not fitting in RAM?
 classes: wide
 ---
 
-<script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
 
 *tl;dr: The `faiss` library allows to perform nearest-neighbor search in an efficient way, scaling to several millions dense vectors. Go straight to the [example code](https://github.com/davidefiocco/faiss-on-disk-example)!*
 
@@ -136,14 +133,14 @@ Let's examine more in detail a case in which:
 - accuracy is more important than speed: ideally we'd like to have exact results;
 - We plan to perform several searches (>10000) in the lifetime of an index.
 
-To play with a realistic dataset, let's use the GIST 1M vector dataset ([GIST vectors](http://people.csail.mit.edu/torralba/code/spatialenvelope/) have been devised in computer vision to represent entire images).
+To play with a realistic dataset, let's use the GIST 1M vector dataset ([GIST vectors](http://people.csail.mit.edu/torralba/code/spatialenvelope/) have been devised in computer vision to represent entire images). We can download and inflate the dataset on a Linux shell using `wget` and `tar`:
 
 ```bash
 wget ftp://ftp.irisa.fr/local/texmex/corpus/gist.tar.gz
 tar -xzvf gist.tar.gz
 ```
 
-with appropriate helper functions, one can read the file `gist_base.fvecs` into a `numpy` array `xb` of shape `(1000000, 960)`:
+Moving to a Python shell, with appropriate [helper functions](https://github.com/davidefiocco/faiss-on-disk-example/blob/master/src/utils.py), one can read the file `gist_base.fvecs` (3.57 GB in size) into a `numpy` array `xb` of shape `(1000000, 960)`:
 
 ```python
 xb = fvecs_read("./gist/gist_base.fvecs")
@@ -207,7 +204,7 @@ distances, neighbors = index.search(xq, k)
 ```
 
 The code above retrieves the correct result for the 1st nearest neighbor in 95% of the cases (better accuracy can be obtained setting higher values of `nprobe`). 
-Memory consumption can be kept at bay, as shown by running the code above with `mprof run`: 
+Memory consumption can be kept at bay: the search succeeds within a container with RAM capped at 2GB, as shown by running the code with `mprof run`: 
 
 ![faiss-run](/images/2021-01-02-faiss-run.png "RAM usage over time for 1k searches on 1M GIST vectors with faiss running in a container whose RAM was capped at 2GB maximum.")
 
@@ -219,6 +216,7 @@ The full code to try out the GIST example is at <https://github.com/davidefiocco
 
 ### Search on
 
+The faiss documentation is on its GitHub [wiki](https://github.com/facebookresearch/faiss/wiki) (the wiki contains also references to research work at the foundations of the library).
 An [introductory talk](https://www.youtube.com/watch?v=Un1Q92lfhPM) about `faiss` by its core devs can be found on YouTube, and a high-level intro is also in a [FB engineering blogpost](https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/).  
 More code examples are available on the [`faiss` GitHub repository](https://github.com/facebookresearch/faiss/tree/master/tutorial/python).  
 [ann-benchmarks.com](https://ann-benchmarks.com) contains the results of benchmarks run with different libraries for approximate nearest neighbors search (also other than `faiss`).
