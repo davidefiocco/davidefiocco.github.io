@@ -145,7 +145,7 @@ Moving to a Python shell, with appropriate [helper functions](https://github.com
 xb = fvecs_read("./gist/gist_base.fvecs")
 ```
 
-As we plan to perform several searches (see above), we can assume that precomputing can be helpful. As we are limited by RAM but the dataset is not huge, we use pruning but not compression. We thus opt `IVF4000,Flat` index that organizes the vectors in 4000 buckets in $d=960$ dimensional space:
+As we plan to perform several searches (see above), we can assume that precomputing can be helpful. As we are limited by RAM but the dataset is not huge, we use pruning but not compression. We thus opt for a `IVF4000,Flat` index that [organizes the vectors in 4000 buckets in $d=960$ dimensional space](https://github.com/facebookresearch/faiss/wiki/Guidelines-to-choose-an-index#if-somewhat-then-flat):
 
 ```python
 index = faiss.index_factory(xb.shape[1], f"IVF4000,Flat")
@@ -211,11 +211,13 @@ The equivalent `numpy` code needs more than 8GB to run (it crashes otherwise!), 
 
 ![numpy-run](/images/2021-01-02-numpy-run.png "RAM usage over time for 1k searches on 1M GIST vectors with numpy")
 
-The full code to try out the GIST example is at <https://github.com/davidefiocco/faiss-on-disk-example>.
+So indeed `faiss` can be helpful to tackle cases in which `numpy` or `sklearn` would struggle.
+
+That's it! The GIST example above can be reproduced using code on <https://github.com/davidefiocco/faiss-on-disk-example>.
 
 ### Search on
 
-The `faiss` documentation is on its GitHub [wiki](https://github.com/facebookresearch/faiss/wiki) (the wiki contains also references to research work at the foundations of the library).  
+The `faiss` documentation is on its GitHub [wiki](https://github.com/facebookresearch/faiss/wiki) (the wiki contains also references to [research work](https://github.com/facebookresearch/faiss/wiki#research-foundations-of-faiss) at the foundations of the library).  
 An [introductory talk](https://www.youtube.com/watch?v=Un1Q92lfhPM) about `faiss` by its core devs can be found on YouTube, and a high-level intro is also in a [FB engineering blogpost](https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/).  
 More code examples are available on the [`faiss` GitHub repository](https://github.com/facebookresearch/faiss/tree/master/tutorial/python).  
 The website [ann-benchmarks.com](http://ann-benchmarks.com) contains the results of benchmarks run with different libraries for approximate nearest neighbors search (including `faiss`).  
