@@ -211,7 +211,7 @@ The equivalent `numpy` code needs more than 8GB to run (it crashes otherwise!), 
 
 ![numpy-run](/images/2021-01-02-numpy-run.png "RAM usage over time for 1k searches on 1M GIST vectors with numpy")
 
-So indeed `faiss` can be helpful to tackle cases in which `numpy` or `sklearn` would struggle.
+The GIST dataset is not huge, but the example above shows that `faiss` can be helpful to tackle cases in which `numpy` or `sklearn` struggle, and can be modified (e.g. by [using other indices](https://github.com/facebookresearch/faiss/wiki/Guidelines-to-choose-an-index#how-big-is-the-dataset)) to handle even larger vector sets.
 
 That's it! The GIST example above can be reproduced using code on <https://github.com/davidefiocco/faiss-on-disk-example>.
 
