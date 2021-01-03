@@ -17,7 +17,7 @@ This feature is important as it unlocks the possibility of _searching_ for entit
 
 For example, let's consider words. If we want to look up words that are related to a given word (e.g. synonyms), we can
 
-0. Compute appropriate vector representations `xq` for all $N$ words in a vocabulary $S$;
+0. Compute appropriate vector representations `xb` for all $N$ words in a vocabulary $S$;
 1. Look up the vector representation `xq` of the query word;
 2. Select the vectors that are closest to `xq` (according to some given metric), among all those at step 0;
 3. Retrieve all words represented by the vectors selected in step 2 (those are the final results).
@@ -114,7 +114,7 @@ index.add(xb)
 distances, neighbors = index.search(xq.reshape(1,-1).astype(np.float32), k)
 ```
 
-What's cool about `faiss` is that it allows to strike a balance between accuracy (i.e. not returning all the true k-nearest neighbors, but just "good guesses"), speed and RAM requirements when dealing with large $N$. This is possible thanks to the precomputation of data structures (the _indexes_) that store vectors in a clever way, and by tweaking their parameters. The library is also designed to take advantage of GPU architectures to speed up search.
+What's cool about `faiss` is that it allows to strike a balance between accuracy (i.e. not returning all the true k-nearest neighbors, but just "good guesses"), speed and RAM requirements when dealing with large $N$. This is possible thanks to the precomputation of data structures (the _indices_) that store vectors in a clever way, and by tweaking their parameters. The library is also designed to take advantage of GPU architectures to speed up search.
 
 One class of tricks used to speed up search is the _pruning_ of $S$, i.e. dividing up $S$ into "buckets" (Voronoi cells in $d$ dimensions) and probing for nearest neighbors only some number `nprobe` of such buckets. While this procedure can _miss_ some of the true nearest neighbors, it can greatly accelerate the search.
 
@@ -128,7 +128,7 @@ The `faiss` [wiki](https://github.com/facebookresearch/faiss/wiki) on GitHub can
 Let's examine more in detail a case in which:
 
 - $N \approx 10^6$;
-- search is performed in a Docker container running on CPU (single machine) and very few GBs of RAM are available. We can instead rely on a machine with more RAM to build the index;
+- search is performed in a Docker container running on CPU (single machine) and very few GBs of RAM are available; we can instead rely on a machine with more RAM to _build_ the index;
 - accuracy is more important than speed: ideally we'd like to have exact results;
 - we plan to perform several searches (>10000) in the lifetime of an index.
 
