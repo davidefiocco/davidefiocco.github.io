@@ -91,7 +91,7 @@ and load it again with
 neigh = load("my_fitted_nn_estimator")
 ```
 
-Last but not least, the `sklearn`-based code is arguably more readable. Also, the use of a dedicated library can help avoiding bugs (see e.g. the `numpy.argpartition` caveat above) that may be inadvertently introduced in the code.
+Last but not least, the `sklearn`-based code is arguably more readable., and the use of a dedicated library can help avoid bugs (see e.g. the `numpy.argpartition` caveat above) that may be inadvertently introduced in the code.
 
 However, if the search space is large (say, several million vectors), both the time needed to compute nearest neighbors and RAM needed to carry out the search may be large. We thus need additional tricks to solve the problem!
 
@@ -112,9 +112,9 @@ index = faiss.index_factory(d, "Flat")
 index.train(xb)
 index.add(xb)
 distances, neighbors = index.search(xq.reshape(1,-1).astype(np.float32), k)
-```
+```  
 
-What's cool about `faiss` is that it allows to strike a balance between accuracy (i.e. not returning all the true k-nearest neighbors, but just "good guesses"), speed and RAM requirements when dealing with large $N$. This is possible thanks to the precomputation of data structures (the _indices_) that store vectors in a clever way, and by tweaking their parameters. The library is also designed to take advantage of GPU architectures to speed up search.
+So, why the fuss? Well, what's cool about `faiss` is that it allows to strike a balance between accuracy (i.e. not returning all the true k-nearest neighbors, but just "good guesses"), speed and RAM requirements when dealing with large $N$. This is possible thanks to the precomputation of data structures (the _indices_) that store vectors in a clever way, and by tweaking their parameters. The library is also designed to take advantage of GPU architectures to speed up search.
 
 One class of tricks used to speed up search is the _pruning_ of $S$, i.e. dividing up $S$ into "buckets" (Voronoi cells in $d$ dimensions) and probing for nearest neighbors only some number `nprobe` of such buckets. While this procedure can _miss_ some of the true nearest neighbors, it can greatly accelerate the search.
 
