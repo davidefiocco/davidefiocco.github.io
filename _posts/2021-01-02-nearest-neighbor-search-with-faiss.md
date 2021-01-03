@@ -8,7 +8,7 @@ classes: wide
 
 ## Vector embeddings and search
 
-A common procedure used in information retrieval and machine learning is to represent entities with low-dimensional _dense_ vectors, also known as _embeddings_. These vectors typically have a number of dimensions typically between 25 and 1000 (we call them _dense_ because the utmost majority of their components are non-zero, so they are not _sparse_).
+A common procedure used in information retrieval and machine learning is to represent entities with low-dimensional _dense_ vectors, also known as _embeddings_. These vectors typically have a number of dimensions between 25 and 1000 (we call them _dense_ because the utmost majority of their components are non-zero, so they are not _sparse_).
 
 Researchers have devised ways to compute vector embeddings for different kinds of entities: nowadays embeddings can be constructed for [words](http://www.youtube.com/watch?v=8rXD5-xhemo&t=34m35s), entire text documents, entire images, [local features](https://en.wikipedia.org/wiki/Feature_detection_(computer_vision)) in images, [nodes in graphs](https://arxiv.org/abs/1607.00653), and more (as testified by the existence of very [many "2vec" models](https://github.com/MaxwellRebo/awesome-2vec)).
 
