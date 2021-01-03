@@ -17,7 +17,7 @@ This feature is important as it unlocks the possibility of _searching_ for entit
 
 For example, let's consider words. If we want to look up words that are related to a given word (e.g. synonyms), we can
 
-0. Compute appropriate vector representations $S$ for all words in a vocabulary;
+0. Compute appropriate vector representations `xq` for all $N$ words in a vocabulary $S$;
 1. Look up the vector representation `xq` of the query word;
 2. Select the vectors that are closest to `xq` (according to some given metric), among all those at step 0;
 3. Retrieve all words represented by the vectors selected in step 2 (those are the final results).
@@ -50,7 +50,7 @@ N = 1000000
 d = 100
 k = 5
 
-# read in a file of d-dimensional vectors (can check this with `assert xb.shape[1] == d`)
+# create an array of N d-dimensional vectors (our search space)
 xb = np.random.random((N, d)).astype('float32')
 
 # create a random d-dimensional query vector
@@ -193,7 +193,7 @@ index.make_direct_map()
 index.reconstruct(i).reshape(1,-1).astype(np.float32)
 ```
 
-Finally, we can perform the search for a set of 1000 query vectors `xq`. We carry out the search for a limited number of `nprobe` cells with
+Finally, we can perform the search for a set of 1000 query vectors `xq`. We carry out the search within a limited number of `nprobe` cells with
 
 ```python
 xq = fvecs_read("./gist/gist_query.fvecs")
