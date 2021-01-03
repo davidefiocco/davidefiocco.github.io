@@ -17,16 +17,16 @@ This feature is important as it unlocks the possibility of _searching_ for entit
 
 For example, let's consider words. If we want to look up words that are related to a given word (e.g. synonyms), we can
 
-0. Compute appropriate vector representations `xb` for all $N$ words in a vocabulary $S$;
-1. Look up the vector representation `xq` of the query word;
-2. Select the vectors that are closest to `xq` (according to some given metric), among all those at step 0;
-3. Retrieve all words represented by the vectors selected in step 2 (those are the final results).
+1. Compute appropriate vector representations `xb` for all $N$ words in a vocabulary $S$;
+2. Look up the vector representation `xq` of the query word;
+3. Select the vectors that are closest to `xq` (according to some given metric), among all those at step 1;
+4. Retrieve all words represented by the vectors selected in step 3 (those are the final results).
 
 One could carry out a similar procedure using documents ([Elasticsearch now supports this](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-score-query.html#vector-functions) to retrieve similar documents), images ([search engines for images](https://ai.googleblog.com/2019/07/building-smily-human-centric-similar.html) can work this way) or small details in images (as done in [feature matching](https://docs.opencv.org/master/dc/dc3/tutorial_py_matcher.html)).
 
-If we can compute a "good" vector representation for entities (step 0 above) and have a viable algorithm to identify vectors close to a query vector (step 2, also known as _k-nearest neighbors_ search, or _k-NN search_) we can build an efficient search engine. 
+If we can compute a "good" vector representation for entities (step 1 above) and have a viable algorithm to identify vectors close to a query vector (step 3, also known as _k-nearest neighbors_ search, or _k-NN search_) we can build an efficient search engine. 
 
-In what follows we assume that step 0 has been solved for us and concentrate on how to carry out step 2, using Python and focusing on the cases of large $N$.
+In what follows we assume that step 1 has been solved for us and concentrate on how to carry out step 3, using Python and focusing on the cases of large $N$.
 Solving k-NN search has great industrial relevance: companies such as [Spotify](https://github.com/spotify/annoy) and [Facebook](https://github.com/facebookresearch/faiss) have been developing libraries to solve this problem efficiently.
 
 ## k-nearest neighbors search in Python
