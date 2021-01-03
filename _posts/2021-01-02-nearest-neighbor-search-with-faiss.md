@@ -1,6 +1,6 @@
 ---
 title: First steps with Faiss for k-nearest neighbor search in large search spaces
-excerpt: Nearest-neighbor search in vector spaces in very useful in a variety of tasks. How to tackle this when dealing with A LOT of vectors not fitting in RAM?
+excerpt: Nearest-neighbor search in vector spaces is useful in a wide variety of tasks. How to tackle this when dealing with A LOT of vectors not fitting in RAM?
 classes: wide
 ---
 
