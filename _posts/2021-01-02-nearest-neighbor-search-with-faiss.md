@@ -15,7 +15,7 @@ Researchers have devised ways to compute vector embeddings for different kinds o
 Such vector representations have interesting properties (think [word2vec](http://www.youtube.com/watch?v=kEMJRjEdNzM&t=1m9s)'s). One basic property is that similar vectors (i.e. vectors close to each other according to a given _similarity metric_, like the cosine similarity or the Euclidean distance) represent entities that are somehow closely related to each other.
 This feature is important as it unlocks the possibility of _searching_ for entities relevant for a given query entity.
 
-As example, let's consider words. If we want to look up words that are related to a given word (e.g. synonyms), we can
+For example, let's consider words. If we want to look up words that are related to a given word (e.g. synonyms), we can
 
 0. Compute appropriate vector representations $S$ for all words in a vocabulary;
 1. Look up the vector representation `xq` of the query word;
@@ -34,7 +34,7 @@ Solving k-NN search has great industrial relevance: companies such as [Spotify](
 Given a set $S$ of $d$-dimensional $N$ vectors `xb` (the _search space_) and a query vector `xq`, how can we find its nearest neighbors in $S$ using Python?  
 If $N$ is large, the computation can be expensive, so it's beneficial to leverage some level of optimization offered by dedicated numerical libraries.  
 
-In what follows we'll analyze solution using `numpy`, `scikit-learn` and finally `faiss`, that can search among several millions of dense vectors. We will use the Euclidean distance as similarity metric for vectors (code could be modified to use other metrics).
+In what follows we'll analyze a solution using `numpy`, `scikit-learn` and finally `faiss`, that can search among several millions of dense vectors. We will use the Euclidean distance as similarity metric for vectors (code could be modified to use other metrics).
 
 ### Linear search using `numpy`
 
@@ -93,7 +93,7 @@ neigh = load("my_fitted_nn_estimator")
 
 Last but not least, the `sklearn`-based code is arguably more readable. Also, the use of a dedicated library can help avoiding bugs (see e.g. the `numpy.argpartition` caveat above) that may be inadvertently introduced in the code.
 
-However, if the search space become large (say, several million vectors), both the time needed to compute nearest-neighbors and RAM needed to carry out the search may be large. We thus need additional tricks to solve the problem!
+However, if the search space is large (say, several million vectors), both the time needed to compute nearest-neighbors and RAM needed to carry out the search may be large. We thus need additional tricks to solve the problem!
 
 ![haystack](https://upload.wikimedia.org/wikipedia/commons/4/42/Needle_in_haystack6.jpg "Some search problems can be hard.")
 
@@ -128,7 +128,7 @@ The `faiss` [wiki](https://github.com/facebookresearch/faiss/wiki) on GitHub can
 Let's examine more in detail a case in which:
 
 - $N \approx 10^6$;
-- search is performed in Docker container running on CPU (single machine) and very few GBs of RAM are available. We can instead rely on a machine with more RAM to build the index;
+- search is performed in a Docker container running on CPU (single machine) and very few GBs of RAM are available. We can instead rely on a machine with more RAM to build the index;
 - accuracy is more important than speed: ideally we'd like to have exact results;
 - we plan to perform several searches (>10000) in the lifetime of an index.
 
@@ -202,7 +202,7 @@ index.nprobe = 80
 distances, neighbors = index.search(xq, k)
 ```
 
-The code above retrieves the correct result for the 1st nearest neighbor in 95% of the cases (better accuracy can be obtained setting higher values of `nprobe`). 
+The code above retrieves the correct result for the 1st nearest neighbor in 95% of the cases (better accuracy can be obtained by setting higher values of `nprobe`). 
 Memory consumption can be kept at bay: the search succeeds within a Docker container with RAM capped at 2GB, as shown by running the code with `mprof run`: 
 
 ![faiss-run](/images/2021-01-02-faiss-run.png "RAM usage over time for 1k searches on 1M GIST vectors with faiss running in a container whose RAM was capped at 2GB maximum.")
