@@ -148,7 +148,7 @@ xb = fvecs_read("./gist/gist_base.fvecs")
 As we plan to perform several searches (see above), we can assume that precomputing can be helpful. As we are limited by RAM but the dataset is not huge, we use pruning but not compression. We thus opt for a `IVF4000,Flat` index that [organizes the vectors in 4000 buckets in $d=960$ dimensional space](https://github.com/facebookresearch/faiss/wiki/Guidelines-to-choose-an-index#if-somewhat-then-flat):
 
 ```python
-index = faiss.index_factory(xb.shape[1], f"IVF4000,Flat")
+index = faiss.index_factory(xb.shape[1], "IVF4000,Flat")
 ```
 
 We then need to train the index so to cluster the vectors that are added to it.
