@@ -1,10 +1,10 @@
 ---
-title: First steps with Faiss for k-nearest-neighbor search in large search spaces
+title: First steps with Faiss for k-nearest neighbor search in large search spaces
 excerpt: Nearest-neighbor search in vector spaces in very useful in a variety of tasks. How to tackle this when dealing with A LOT of vectors not fitting in RAM?
 classes: wide
 ---
 
-*tl;dr: The `faiss` library allows to perform nearest-neighbor search in an efficient way, scaling to several million dense vectors. Go straight to the [example code](https://github.com/davidefiocco/faiss-on-disk-example)!*
+*tl;dr: The `faiss` library allows to perform nearest neighbor search in an efficient way, scaling to several million dense vectors. Go straight to the [example code](https://github.com/davidefiocco/faiss-on-disk-example)!*
 
 ## Vector embeddings and search
 
@@ -93,7 +93,7 @@ neigh = load("my_fitted_nn_estimator")
 
 Last but not least, the `sklearn`-based code is arguably more readable. Also, the use of a dedicated library can help avoiding bugs (see e.g. the `numpy.argpartition` caveat above) that may be inadvertently introduced in the code.
 
-However, if the search space is large (say, several million vectors), both the time needed to compute nearest-neighbors and RAM needed to carry out the search may be large. We thus need additional tricks to solve the problem!
+However, if the search space is large (say, several million vectors), both the time needed to compute nearest neighbors and RAM needed to carry out the search may be large. We thus need additional tricks to solve the problem!
 
 ![haystack](https://upload.wikimedia.org/wikipedia/commons/4/42/Needle_in_haystack6.jpg "Some search problems can be hard.")
 
