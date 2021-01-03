@@ -91,7 +91,7 @@ and load it again with
 neigh = load("my_fitted_nn_estimator")
 ```
 
-Last but not least, the `sklearn`-based code is arguably more readable., and the use of a dedicated library can help avoid bugs (see e.g. the `numpy.argpartition` caveat above) that may be inadvertently introduced in the code.
+Last but not least, the `sklearn`-based code is arguably more readable and the use of a dedicated library can help avoid bugs (see e.g. the `numpy.argpartition` caveat above) that may be inadvertently introduced in the code.
 
 However, if the search space is large (say, several million vectors), both the time needed to compute nearest neighbors and RAM needed to carry out the search may be large. We thus need additional tricks to solve the problem!
 
