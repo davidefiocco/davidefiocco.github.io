@@ -1,6 +1,6 @@
 ---
 title: First steps with Faiss for k-nearest neighbor search in large search spaces
-excerpt: Nearest-neighbor search in vector spaces in very useful in a variety of tasks. How to tackle this when dealing with A LOT of vectors not fitting in RAM?
+excerpt: Nearest-neighbor search in vector spaces is useful in a wide variety of tasks. How to tackle this when dealing with A LOT of vectors not fitting in RAM?
 classes: wide
 ---
 
@@ -52,7 +52,6 @@ k = 5
 
 # create an array of N d-dimensional vectors (our search space)
 xb = np.random.random((N, d)).astype('float32')
-
 # create a random d-dimensional query vector
 xq = np.random.random(d)
 # compute distances
@@ -101,7 +100,7 @@ However, if the search space is large (say, several million vectors), both the t
 
 One library that offers a more sophisticated bag of tricks to perform the search is [`faiss`](https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/). 
 From their [wiki on GitHub](https://github.com/facebookresearch/faiss/wiki): "_Faiss is a library for efficient similarity search and clustering of dense vectors. It contains algorithms that search in sets of vectors of any size, **up to ones that possibly do not fit in RAM**_". 
-The possibility of searching in vectors set not fitting in RAM is useful. `numpy`, `sklearn` and even Spotify's [`annoy`](https://github.com/spotify/annoy/issues/451) can't do that AFAIK.
+The possibility of searching in vector sets not fitting in RAM is useful and `numpy`, `sklearn`, even Spotify's [`annoy` can't do that](https://github.com/spotify/annoy/issues/451) AFAIK.
 
 Exact brute-force searches like the one done above with `numpy` can be replicated with the syntax:
 
@@ -113,6 +112,7 @@ index.train(xb)
 index.add(xb)
 distances, neighbors = index.search(xq.reshape(1,-1).astype(np.float32), k)
 ```  
+
 
 So, why the fuss? Well, what's cool about `faiss` is that it allows to strike a balance between accuracy (i.e. not returning all the true k-nearest neighbors, but just "good guesses"), speed and RAM requirements when dealing with large $N$. This is possible thanks to the precomputation of data structures (the _indices_) that store vectors in a clever way, and by tweaking their parameters. The library is also designed to take advantage of GPU architectures to speed up search.
 
