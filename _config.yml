@@ -81,15 +81,15 @@ author:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       # url: "mailto:your.name@email.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/monodavide"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/davidefiocco/"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/davidefiocco/"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/monodavide"
 
 # Site Footer
 footer:
