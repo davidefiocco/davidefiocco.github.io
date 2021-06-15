@@ -94,12 +94,12 @@ author:
 # Site Footer
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/monodavide"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/davidefiocco"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/monodavide"
 
 # Reading Files
 include:
