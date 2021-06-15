@@ -95,8 +95,8 @@ author:
 footer:
   links:
     - label: "Twitter"
-      icon: "https://twitter.com/monodavide"
-      # url:
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/monodavide"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/davidefiocco"
