@@ -221,4 +221,5 @@ The `faiss` documentation is on its GitHub [wiki](https://github.com/facebookres
 An [introductory talk](https://www.youtube.com/watch?v=Un1Q92lfhPM) about `faiss` by its core devs can be found on YouTube, and a high-level intro is also in a [FB engineering blogpost](https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/).  
 More code examples are available on the [`faiss` GitHub repository](https://github.com/facebookresearch/faiss/tree/master/tutorial/python).  
 The website [ann-benchmarks.com](http://ann-benchmarks.com) contains the results of benchmarks run with different libraries for approximate nearest neighbors search (including `faiss`).  
-Another helpful GitHub repository containing `faiss` usage tips is <https://github.com/matsui528/faiss_tips>.
+Another helpful GitHub repository containing `faiss` usage tips is <https://github.com/matsui528/faiss_tips>.  
+A nice tutorial on the library can be found at <https://www.pinecone.io/learn/faiss-tutorial/> too. Enjoy!
