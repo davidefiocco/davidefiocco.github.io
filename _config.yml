@@ -73,30 +73,36 @@ analytics:
 # Site Author
 author:
   name             : "Davide Fiocco"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Hi, I'm Davide. Currently I am a data scientist at Frontiers. I am collecting here notes of Python + ML things that could be of wider interest."
-  location         : "Madrid, Spain"
+  avatar           : "/images/bio-photo.jpg"
+  bio              : "Hi, I'm Davide, a data scientist. I am collecting here notes of Python + ML things that could be of wider interest."
+  location         : "Verona, Italy"
   email            :
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       # url: "mailto:your.name@email.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/monodavide"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/davidefiocco/"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/davidefiocco/"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/monodavide"
+    - label: "Stack Overflow"
+      icon: "fab fa-fw fa-stack-overflow"
+      url: "https://stackoverflow.com/users/4240413/davide-fiocco"
 
 # Site Footer
 footer:
   links:
-    - label: "Twitter"
-      icon: "https://twitter.com/monodavide"
-      # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/davidefiocco"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/monodavide"
 
 # Reading Files
 include:
