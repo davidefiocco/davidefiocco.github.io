@@ -4,4 +4,4 @@ excerpt: Because why not?
 classes: wide
 ---
 
-{% include /includes/REPL.html %}
+{% include REPL.html %}
