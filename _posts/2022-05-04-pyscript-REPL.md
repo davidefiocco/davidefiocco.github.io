@@ -4,4 +4,6 @@ excerpt: Because why not?
 classes: wide
 ---
 
+It can be done using [pyscript](https://github.com/pyscript/pyscript).
+
 {% include REPL.html %}
