@@ -101,8 +101,8 @@ footer:
       icon: "fab fa-fw fa-github"
       url: "https://github.com/davidefiocco"
     - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/monodavide"
+      icon: "fab fa-fw fa-bluesky"
+      url: "https://bsky.app/profile/monodavide.bsky.social"
 
 # Reading Files
 include:
