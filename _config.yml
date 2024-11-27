@@ -100,7 +100,7 @@ footer:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/davidefiocco"
-    - label: "Twitter"
+    - label: "Bluesky"
       icon: "fab fa-fw fa-bluesky"
       url: "https://bsky.app/profile/monodavide.bsky.social"
 
