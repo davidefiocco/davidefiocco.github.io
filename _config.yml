@@ -51,8 +51,8 @@ yandex_site_verification :
 naver_site_verification  :
 
 # Social Sharing
-twitter:
-  username               : "monodavide"
+bluesky:
+  username               : "monodavide.bsky.social"
 
 og_image                 : # Open Graph/Twitter default site image
 # For specifying social profiles
@@ -88,7 +88,7 @@ author:
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/davidefiocco/"
     - label: "Bluesky"
-      icon: "fab fa-fw fa-bluesky-square"
+      icon: "fab fa-fw fa-bluesky"
       url: "https://bsky.app/profile/monodavide.bsky.social"
     - label: "Stack Overflow"
       icon: "fab fa-fw fa-stack-overflow"
